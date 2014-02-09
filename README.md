@@ -1,11 +1,10 @@
-
 _progress on lt3 :)_
 
 > A slightly powerful, intelligent and simple WordPress theme.
 
 **Mininum WordPress Version Requirment is 3.8**
 
-### Feature
+### Features
 
 - **Modulated file structure**
 - **Security measures**
@@ -13,11 +12,20 @@ _progress on lt3 :)_
 - Extendable and immediately useful wp-config-sample.php and .htaccess
 - Thoughtful, WordPress project specific helper functions
 - Clean and thought out template files, including template partials
-- Powerful Custom Post Type class
+- Powerful Custom Post Type and Taxonomy class - Collectively 'Katana'
 - Clean functions.php reserved for use constant declarations and modular, project specific file includes
 - modernizr.js, respond.js and jquery.js libraries / scripts ready to go if needed
 
 
+### Installation
+1. Add the `samurai` folder to your theme's directory.
+2. add the `.htaccess` and `.gitignore` files to your WordPress root.
+3. With the `wp-config-sample.php` file: 
+  1. Rename to `wp-config.php` and add it to your WordPress root. 
+  2. Go to https://api.wordpress.org/secret-key/1.1/salt/ and copy the unique, newly generated salts and replace to place holder salts.
+  3. Fill out the Database environment credentials.
+  4. Change the `wp_` database prefix to something better.
+4. got to *wp-admin*, follow the remainding WordPress install, and activate the theme via **Apparence > Themes**
 
 ### Documentation
 
