@@ -2,7 +2,7 @@
 /**
  * Snippet
  * ========================================================================
- * snippets.php
+ * snippet.php
  * @version      1.0 | June 20th 2013
  * @package      WordPress
  * @subpackage   samurai

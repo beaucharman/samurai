@@ -1,8 +1,8 @@
 <?php
 /**
- * Menus Class
+ * Menu
  * ========================================================================
- * menus.php
+ * menu.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   samurai

@@ -4,7 +4,7 @@
  * ========================================================================
  * custom-taxonomy.php
  * @version   2.0 | June 30th 2013
- * @author    Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @author    Beau Charman | @beaucharman | https://github.com/beaucharman
  * @link      https://github.com/beaucharman/wordpress-custom-taxonomies
  * @license   MIT license
  *

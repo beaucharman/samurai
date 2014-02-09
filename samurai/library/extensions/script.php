@@ -1,8 +1,8 @@
 <?php
 /**
- * Scripts
+ * Script
  * ========================================================================
- * scripts.php
+ * script.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   samurai

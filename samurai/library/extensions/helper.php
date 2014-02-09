@@ -1,8 +1,8 @@
 <?php
 /**
- * Helpers
+ * Helper
  * ========================================================================
- * helpers.php
+ * helper.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   samurai

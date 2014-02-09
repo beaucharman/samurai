@@ -1,12 +1,12 @@
 <?php
 /**
- * Models
+ * Model
  *
+ * @version      1 | January 8th 2014
  * @package      WordPress
- * @subpackage   samurai/library/extensions/custom-post-type.php
- * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link         https://github.com/beaucharman/samurai
- * @license      MIT license
+ * @subpackage   samurai/library/extensions/custom-post-type.php,
+ *               samurai/library/extensions/custom-taxonomy.php,
+ *               samurai/library/extensions/menu.php
  *
  * Data structures, taxonomies and custom post types
  *

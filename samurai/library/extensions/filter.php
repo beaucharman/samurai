@@ -1,9 +1,9 @@
 <?php
 /**
- * Filters
+ * Filter
  * ========================================================================
- * template-filters.php
- * @version      1.0 | June 20th 2013
+ * filter.php
+ * @version      2.0 | February 12th 2014
  * @package      WordPress
  * @subpackage   samurai
  *
