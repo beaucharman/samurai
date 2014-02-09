@@ -7,5 +7,7 @@
 ## Technology Colophon
 
   HTML5, CSS3
+  
   Normalize.css, jQuery, Modernizr
-  Plugins required
+  
+  _Plugins required_
