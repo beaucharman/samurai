@@ -1,0 +1,138 @@
+/**
+ * Custom Editor styles
+ * ========================================================================
+ * custom-editor-styles.css
+ * @version      2.1 | June 6th 2013
+ * @package      WordPress
+ * @subpackage   samurai
+ * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link         https://github.com/beaucharman/samurai
+ * @license      MIT license
+ */
+
+/* Global styles
+   ======================================================================== */
+html {
+  background-color: #f8f8f8;
+  font-size: 100%;
+}
+
+body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #000;
+  background-color: #fff;
+  margin: 0;
+}
+
+html .mceContentBody {
+  max-width: 960px; /* set this the same as the general copy width */
+  border-right: 1px solid #ccc;
+  padding: 20px;
+}
+
+/* Paragraph and Block level elements typography
+   ======================================================================== */
+p, blockquote, ul, ol, dl, address {
+  margin: 1.5em 0;
+}
+
+blockquote {
+  margin-left: 1.5em;
+}
+
+p, ul, ol, dl, address, td, tr, textarea, input {
+  font-size: 1em;
+}
+
+/* Tables */
+table {
+  width: 100%;
+}
+
+td, th {
+  border-bottom: 1px solid #ccc;
+  padding: 0.5em;
+  text-align: left;
+}
+
+/**
+ *  Alignment styles
+ */
+.alignleft,
+.alignright {
+  margin-bottom: 1.5em;
+}
+
+.alignleft {
+  margin-right: 1.5em;
+  float: left;
+}
+
+.alignright {
+  margin-left: 1.5em;
+  float: right;
+}
+
+.aligncenter {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  clear: both;
+}
+
+/**
+ * Styles added through the style select editor filter
+ */
+.lead {
+  font-size: 1.5em;
+}
+
+.disclaimer {
+  font-size: 0.85em;
+  color: #555;
+}
+
+.warning {
+  color: red;
+  border-bottom: 1px dotted red;
+}
+
+.notice {
+  font-style: italic;
+}
+
+.muted {
+  color: #aaa;
+}
+
+/* Image and Gallery styles
+   ======================================================================== */
+.entry img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wp-caption {
+  margin-bottom: 1.5em;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.wp-caption img {
+  border: 0 none;
+  padding: 0;
+  margin: 0;
+}
+
+.wp-caption-text {
+  line-height: 1.5;
+  font-size: 10px;
+  margin: 0;
+}
+
+.wp-smiley {
+  margin: 0 !important;
+  max-height: 1em;
+}

@@ -1,0 +1,16 @@
+# Files
+.sass-cache
+.DS_Store
+debug.log
+license.txt
+node_modules
+
+# Directories
+wp-content/uploads
+
+# W3 Total Cache
+wp-content/cache
+wp-content/advanced-cache.php
+wp-content/w3tc-config
+wp-content/db.php
+wp-content/object-cache.php
