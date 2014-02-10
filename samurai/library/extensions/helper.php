@@ -104,9 +104,14 @@ class Samurai_Helper
    *
    * Function to check if page is child of $page.
    */
-  public static function is_child_of_page($page)
+  public static function is_child_of_page($page = null)
   {
     global $post;
+
+    if (! $page && $post->post_parent)
+    {
+      return true;
+    }
 
     if (is_string($page))
     {
@@ -378,7 +383,7 @@ class Samurai_Helper
    * proper nouns, or more complex words, for example
    * knife -> knives, leaf -> leaves.
    */
-  public static function plurify_words($words)
+  public static function plurifypa_words($words)
   {
     if (strToLower(substr($words, -1)) == 'y')
     {
