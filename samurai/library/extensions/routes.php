@@ -1,8 +1,8 @@
 <?php
 /**
- * Route
- * ========================================================================
- * route.php
+ * Routes
+ * ======================================================
+ * routes.php
  * @version      1 | February 9th 2013
  * @package      WordPress
  * @subpackage   samurai

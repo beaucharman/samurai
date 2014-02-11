@@ -1,6 +1,6 @@
 <?php
 /**
- * Model
+ * Models
  *
  * @version      1 | January 8th 2014
  * @package      WordPress

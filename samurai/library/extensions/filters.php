@@ -1,8 +1,8 @@
 <?php
 /**
- * Filter
- * ========================================================================
- * filter.php
+ * Filters
+ * ======================================================
+ * filters.php
  * @version      2.0 | February 12th 2014
  * @package      WordPress
  * @subpackage   samurai
@@ -270,7 +270,7 @@ class Samurai_Filter
       $id = esc_attr($id);
       $capid = 'figcaption_'. $id;
     }
-    
+
     return ''
       . '<figure class="wp-caption ' . esc_attr($align) . ' figure-' . $id . ' figure-width_' . $width . '" aria-labelledby="figcaption_' . $id . '">'
         . do_shortcode($content)

@@ -1,7 +1,7 @@
 <?php
 /**
  * Config
- *
+ * ======================================================
  * config.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
