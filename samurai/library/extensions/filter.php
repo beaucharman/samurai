@@ -225,7 +225,7 @@ class Samurai_Filter
       $classes[] = 'front-page';
     }
 
-    if (! is_404() && ! is_search())
+    if (! is_404() && ! is_search() && $post)
     {
       /**
        * Get terms allocated to the current post type
