@@ -115,7 +115,7 @@ class Samurai_Helper
 
     if (is_string($page))
     {
-      $page = samurai_get_id_by_slug($page);
+      $page = this::get_id_by_slug($page);
     }
 
     $parent = (isset($post->post_parent) && $post->post_parent == $page);
