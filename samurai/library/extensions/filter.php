@@ -261,21 +261,23 @@ class Samurai_Filter
       'caption' => ''
     ), $attr));
 
-    if (1 > (int) $width || empty($caption))
-    {
-      return $val;
-    }
+    if (1 > (int) $width || empty($caption)) return $val;
+
     $capid = '';
 
     if ($id)
     {
       $id = esc_attr($id);
-      $capid = 'id="figcaption_'. $id . '" ';
-      $id = 'id="' . $id . '" aria-labelledby="figcaption_' . $id . '" ';
+      $capid = 'figcaption_'. $id;
     }
-    return '<figure ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: '
-      . (10 + (int) $width) . 'px">' . do_shortcode($content) . '<figcaption ' . $capid
-      . 'class="wp-caption-text">' . $caption . '</figcaption></figure>';
+    
+    return ''
+      . '<figure class="wp-caption ' . esc_attr($align) . ' figure-' . $id . ' figure-width_' . $width . '" aria-labelledby="figcaption_' . $id . '">'
+        . do_shortcode($content)
+        . '<figcaption class="wp-caption-text ' . $capid . '" id="figcaption_' . $id . '">'
+          . $caption
+        . '</figcaption>'
+      . '</figure>';
   }
 
 
