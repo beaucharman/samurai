@@ -108,9 +108,9 @@ class Samurai_Helper
   {
     global $post;
 
-    if (! $page && $post->post_parent)
+    if (! $page)
     {
-      return true;
+      return ($post->post_parent) ? true : false;
     }
 
     if (is_string($page))
