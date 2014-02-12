@@ -128,7 +128,6 @@ class Samurai_Asset
     /**
      * Register styles here
      */
-    wp_register_style('samurai_custom_admin_styles', SAMURAI_FULL_STYLES_PATH . '/admin/custom-admin-styles.css', array(), SAMURAI_SCRIPTS_CACHE_BREAK);
     wp_register_style('samurai_main_stylesheet', SAMURAI_FULL_STYLES_PATH . '/main.css', array(), SAMURAI_STYLES_CACHE_BREAK);
 
 
@@ -160,9 +159,6 @@ class Samurai_Asset
        * Admin stylesheets
        *
        */
-
-      /* Add consistency to site settings inputs */
-      wp_enqueue_style('samurai_custom_admin_styles');
 
       // Enqueue admin styles here.
     }

@@ -16,9 +16,7 @@
 
 <article <?php post_class('article article__page page entry content post-' . get_the_ID()); ?>>
 
-  <h1 class="article-title">
-    <?php the_title(); ?>
-  </h1>
+  <h1 class="article-title"><?php the_title(); ?></h1>
 
   <?php if (has_post_thumbnail()) : ?>
   <figure class="featured-image">

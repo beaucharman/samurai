@@ -16,19 +16,13 @@
 
 <section class="message message--no-articles">
 
-  <h3 class="message__heading">
-    Oops! Nothing Found Here :(
-  </h3>
+  <h3 class="message__heading">Oops! Nothing Found Here :(</h3>
 
-  <p class="message__content">
-    There are currently no articles here.
-  </p>
+  <p class="message__content">There are currently no articles here.</p>
 
   <?php if (SAMURAI_ENABLE_SITE_SEARCH) : ?>
 
-  <p class="message__content--search-suggestion">
-    Try searching our site for what you are after.
-  </p>
+  <p class="message__content--search-suggestion">Try searching our site for what you are after.</p>
 
   <?php get_search_form(); ?>
 

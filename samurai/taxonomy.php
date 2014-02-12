@@ -15,14 +15,10 @@ $taxonomy_term = $wp_query->get_queried_object();
 
 get_header(); ?>
 
-  <h1 class="term__heading content-title">
-    <?php echo $taxonomy_term->name; ?>
-  </h1>
+  <h1 class="term__heading content-title"><?php echo $taxonomy_term->name; ?></h1>
 
   <?php if (term_description()) : ?>
-    <p class="term-description">
-      <?php remove_filter('term_description','wpautop'); echo term_description(); ?>
-    </p>
+  <p class="term-description"><?php remove_filter('term_description','wpautop'); echo term_description(); ?></p>
   <?php endif; ?>
 
   <?php if (have_posts()) : ?>

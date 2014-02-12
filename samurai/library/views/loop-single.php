@@ -16,9 +16,7 @@
 
 <article <?php post_class('article article__single single entry content post-' . get_the_ID()); ?>>
 
-  <h1 class="article-title">
-    <?php the_title(); ?>
-  </h1>
+  <h1 class="article-title"><?php the_title(); ?></h1>
 
   <?php Samurai_Snippet::include_post_meta(); ?>
 
@@ -31,11 +29,8 @@
   <?php the_content(); ?>
 
   <footer class="article-footer">
-
     <?php Samurai_Pagination::include_page_pagination(); ?>
-
     <?php Samurai_Snippet::back_to_parent_link(); ?>
-
   </footer>
 
 </article>

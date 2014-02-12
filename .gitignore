@@ -1,16 +1,21 @@
 # Files
-.sass-cache
 .DS_Store
+.sass-cache
+.rev
 debug.log
 license.txt
 node_modules
+npm-debug.log
+package.json
+readme.html
 
 # Directories
+wp-content/debug.log
 wp-content/uploads
 
 # W3 Total Cache
-wp-content/cache
 wp-content/advanced-cache.php
-wp-content/w3tc-config
+wp-content/cache
 wp-content/db.php
 wp-content/object-cache.php
+wp-content/w3tc-config

@@ -13,7 +13,7 @@
 
         <?php /* Site information  */?>
         <div class="page-footer__information site-information">
-          &copy;<?php echo date('Y'); ?>&nbsp;<?php echo bloginfo('name'); ?>
+          <span>&copy;<?php echo date('Y'); ?>&nbsp;<?php echo bloginfo('name'); ?></span>
         </div>
 
       </footer>

@@ -20,12 +20,13 @@ _progress on lt3 :)_
 ### Installation
 1. Add the `samurai` folder to your theme's directory.
 2. add the `.htaccess` and `.gitignore` files to your WordPress root.
-3. With the `wp-config-sample.php` file: 
-  1. Rename to `wp-config.php` and add it to your WordPress root. 
+3. With the `wp-config-sample.php` file:
+  1. Rename to `wp-config.php` and add it to your WordPress root.
   2. Go to https://api.wordpress.org/secret-key/1.1/salt/ and copy the unique, newly generated salts and replace the place holder salts.
   3. Fill out the Database environment credentials.
   4. Change the `wp_` database prefix to something better.
 4. got to *wp-admin*, follow the remainding WordPress install, and activate the theme via **Apparence > Themes**.
+5. If you have installed WordPress in a sub directory (which you should) make sure to update related paths in .gitignore file and such
 
 ### Documentation
 
