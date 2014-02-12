@@ -36,6 +36,7 @@ class Samurai_Script
      */
     wp_register_script('samurai_modernizr', SAMURAI_FULL_SCRIPTS_PATH . '/vendor/modernizr.min.js', array(), '0.1', false);
     wp_register_script('samurai_jquery', SAMURAI_FULL_SCRIPTS_PATH . '/vendor/jquery.min.js', array(), '0.1', true);
+    wp_register_script('google_jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', array(), '1.11.0', false);
     wp_register_script('samurai_plugins', SAMURAI_FULL_SCRIPTS_PATH . '/plugins.js', array(), SAMURAI_SCRIPTS_CACHE_BREAK, true);
     wp_register_script('samurai_main', SAMURAI_FULL_SCRIPTS_PATH . '/main.js', array(), SAMURAI_SCRIPTS_CACHE_BREAK, true);
 
@@ -67,7 +68,9 @@ class Samurai_Script
       if (SAMURAI_DEVELOPMENT_MODE)
       {
         /* jQuery */
-        // wp_enqueue_script('samurai_jquery');
+        // wp_enqueue_script('samurai_jquery'); // theme version
+        // wp_enqueue_script('jquery'); // wp-includes version
+        // wp_enqueue_script('google_jquery'); // Google hosted version
 
         /* Plugins */
         wp_enqueue_script('samurai_plugins');
