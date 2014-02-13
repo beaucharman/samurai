@@ -1,5 +1,3 @@
-_progress on lt3 :)_
-
 > A slightly powerful, intelligent and simple WordPress theme.
 
 **Mininum WordPress Version Requirment is 3.8**
