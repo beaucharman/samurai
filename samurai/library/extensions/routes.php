@@ -10,6 +10,7 @@
  */
 
 
+
 class Samurai_Route
 {
 
@@ -20,16 +21,14 @@ class Samurai_Route
 
 	}
 
-	function get() {
-		// Work in progress
+	public static function redirect($target, $status_code = 303)
+	{
+		header('Location: ' . $target, true, $status_code);
+		die();
 	}
 
-	public static function get_view($base = '', $modifier = '') {
-
-		get_template_part(SAMURAI_VIEWS_PATH . '/' .  Samurai_Helper::urify_words($base), Samurai_Helper::urify_words($modifier));
-
+	public static function get($subject, $callback)
+	{
+		$callback();
 	}
-
 }
-
-new Samurai_Route;

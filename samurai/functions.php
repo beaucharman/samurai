@@ -56,11 +56,15 @@ require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/initial-theme-setup.php');
 
 /* Helper Functions
    ====================================================== */
-require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/helper.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/helpers.php');
 
 /* Routes
    ====================================================== */
-require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/route.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/routes.php');
+
+/* Views
+   ====================================================== */
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/views.php');
 
 /* Admin Functions
    ====================================================== */
@@ -74,33 +78,25 @@ require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/editor.php');
    ====================================================== */
 require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/media.php');
 
-/* Loop Functions
+/* Query Functions
    ====================================================== */
-require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/loop.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/query.php');
 
-/* Template Filters
+/* Filters
    ====================================================== */
-require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/filter.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/filters.php');
 
-/* Template Snippets
+/* Snippets
    ====================================================== */
-require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/snippet.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/snippets.php');
 
 /* Pagination
    ====================================================== */
 require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/pagination.php');
 
-/* Theme Menus
+/* Menus
    ====================================================== */
-require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/menu.php');
-
-/* Theme JavaScripts
-   ====================================================== */
-require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/script.php');
-
-/* Theme Stylessheets
-   ====================================================== */
-require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/style.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/menus.php');
 
 /* Custom Post Types
    ====================================================== */
@@ -112,7 +108,7 @@ require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/custom-taxonomy.php');
 
 /* Models
    ====================================================== */
-require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/model.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/models.php');
 
 /**
  * Include more files as needed.

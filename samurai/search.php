@@ -21,7 +21,7 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php Samurai_Route::get_view('loop-search'); ?>
+    <?php Samurai_View::make('loop-search'); ?>
 
     <?php Samurai_Pagination::include_archive_pagination(); ?>
 
@@ -32,7 +32,7 @@ get_header(); ?>
 
   <?php else : ?>
 
-    <?php Samurai_Route::get_view('message', 'no-results'); ?>
+    <?php Samurai_View::make('message', 'no-results'); ?>
 
   <?php endif; ?>
 

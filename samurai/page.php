@@ -16,11 +16,11 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php Samurai_Route::get_view('loop', 'page', $post->post_name); ?>
+    <?php Samurai_View::make('loop', 'page', $post->post_name); ?>
 
   <?php else : ?>
 
-    <?php Samurai_Route::get_view('message', 'not-found'); ?>
+    <?php Samurai_View::make('message', 'not-found'); ?>
 
   <?php endif; ?>
 

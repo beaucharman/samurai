@@ -21,7 +21,7 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php Samurai_Route::get_view('loop-archive', get_post_type($post->ID)); ?>
+    <?php Samurai_View::make('loop-archive', get_post_type($post->ID)); ?>
 
     <?php Samurai_Pagination::include_archive_pagination(); ?>
 

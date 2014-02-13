@@ -23,13 +23,13 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php Samurai_Route::get_view('loop-taxonomy', $taxonomy_term->slug); ?>
+    <?php Samurai_View::make('loop-taxonomy', $taxonomy_term->slug); ?>
 
     <?php Samurai_Pagination::include_archive_pagination(); ?>
 
   <?php else : ?>
 
-    <?php Samurai_Route::get_view('message', 'not-found'); ?>
+    <?php Samurai_View::make('message', 'not-found'); ?>
 
   <?php endif; ?>
 
