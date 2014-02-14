@@ -15,10 +15,6 @@ get_header(); ?>
 
   <h1 class="archive__heading content-heading"><?php Samurai_Snippet::get_archive_title(); ?></h1>
 
-  <?php if (term_description()) : ?>
-  <p class="archive__description term-description"><?php echo term_description(); ?></p>
-  <?php endif; ?>
-
   <?php if (have_posts()) : ?>
 
     <?php Samurai_View::make('loop-archive', get_post_type($post->ID)); ?>
