@@ -1,6 +1,6 @@
 > A slightly powerful, intelligent and simple WordPress theme.
 
-**Minimum WordPress Version Requirement is 3.8**
+**Minimum requirements are WordPress version 3.8 and PHP 5.3.0**
 
 ### Features
 

@@ -25,4 +25,11 @@ class Samurai_View
 	{
 		get_template_part(SAMURAI_VIEWS_PATH . '/' .  Samurai_Helper::urify_words($base), Samurai_Helper::urify_words($modifier));
 	}
+
+	public static function template($base = '', $modifier = '')
+	{
+		self::make($base, $modifier);
+		die();
+	}
+
 }

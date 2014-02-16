@@ -13,6 +13,7 @@
  */
 
 
+
 /* ======================================================
    Required Constants
    ====================================================== */
@@ -38,6 +39,7 @@ define('SAMURAI_VIEWS_PATH', 'library/views');
 
 
 
+
 /* ======================================================
    Site Configuration
    ====================================================== */
@@ -48,6 +50,7 @@ require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/config.php');
 /* ======================================================
    Required Extention Files
    ====================================================== */
+
 
 
 /* Initial Theme Setup
@@ -77,10 +80,6 @@ require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/editor.php');
 /* Media
    ====================================================== */
 require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/media.php');
-
-/* Query Functions
-   ====================================================== */
-require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/query.php');
 
 /* Filters
    ====================================================== */
