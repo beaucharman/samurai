@@ -1,6 +1,6 @@
 > A slightly powerful, intelligent and simple WordPress theme.
 
-**Mininum WordPress Version Requirment is 3.8**
+**Minimum WordPress Version Requirement is 3.8**
 
 ### Features
 
@@ -23,7 +23,7 @@
   2. Go to https://api.wordpress.org/secret-key/1.1/salt/ and copy the unique, newly generated salts and replace the place holder salts.
   3. Fill out the Database environment credentials.
   4. Change the `wp_` database prefix to something better.
-4. got to *wp-admin*, follow the remainding WordPress install, and activate the theme via **Apparence > Themes**.
+4. got to *wp-admin*, follow the remaining of the WordPress install, and activate the theme via **Appearance > Themes**.
 5. If you have installed WordPress in a sub directory (which you should) make sure to update related paths in .gitignore file and such
 
 ### Documentation
@@ -67,9 +67,9 @@ None of this wp_ stuff.
 
 **Alter the `.htaccess` file currently in this directory**
 
-It is inspired by the .htaccess file found in http://html5boilerplate.com/, with a few other goodies, bu not all of it is needed for every project.
+It is inspired by the .htaccess file found in http://html5boilerplate.com/, with a few other goodies, but not all of it is needed for every project.
 
-**Use elements from the `wp-config-sample.php` in this directory as needed... or just the whole thing**
+**Use elements from the `wp-config.php` in this directory as needed... or just the whole thing**
 
 Some nice deployment configurations, house cleaning and security stuff in there.
 

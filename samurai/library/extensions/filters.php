@@ -18,7 +18,8 @@ class Samurai_Filter
 
 
 
-  public static function __contruct () {
+  public function __construct()
+  {
 
     add_action('init', array(&$this, 'add_page_excerpts'));
 
@@ -158,6 +159,7 @@ class Samurai_Filter
   public static function trim_excerpt($text)
   {
     global $post;
+
     if ('' == $text)
     {
       $text = get_the_content('');
@@ -176,6 +178,7 @@ class Samurai_Filter
       );
       $text = wp_trim_words($text, $excerpt_length, $excerpt_more);
     }
+
     return $text;
   }
 
@@ -187,15 +190,15 @@ class Samurai_Filter
   public static function browser_body_class($classes)
   {
     global $is_lynx, $is_gecko, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome, $is_iphone;
-    if ($is_lynx) $classes[] = 'browser-lynx';
-    elseif ($is_gecko) $classes[] = 'browser-gecko';
-    elseif ($is_opera) $classes[] = 'browser-opera';
-    elseif ($is_NS4) $classes[] = 'browser-ns4';
-    elseif ($is_safari) $classes[] = 'browser-safari';
-    elseif ($is_chrome) $classes[] = 'browser-chrome';
-    elseif ($is_IE) $classes[] = 'browser-ie';
-    else $classes[] = 'browser-unknown';
-    if ($is_iphone) $classes[] = 'browser-iphone';
+    if ($is_lynx) $classes[] = 'browser--lynx';
+    elseif ($is_gecko) $classes[] = 'browser--gecko';
+    elseif ($is_opera) $classes[] = 'browser--opera';
+    elseif ($is_NS4) $classes[] = 'browser--ns4';
+    elseif ($is_safari) $classes[] = 'browser--safari';
+    elseif ($is_chrome) $classes[] = 'browser--chrome';
+    elseif ($is_IE) $classes[] = 'browser--ie';
+    else $classes[] = 'browser--unknown';
+    if ($is_iphone) $classes[] = 'browser--iphone';
     return $classes;
   }
 
@@ -218,7 +221,7 @@ class Samurai_Filter
     elseif (! is_front_page() && ! is_search() && isset($post->post_name))
     {
       $classes[] = 'not-front-page';
-      $classes[] = 'page-' . $post->post_name;
+      $classes[] = 'page--' . $post->post_name;
     }
     elseif (is_front_page())
     {
@@ -234,12 +237,14 @@ class Samurai_Filter
       $taxonomies = get_taxonomies('', 'names');
       foreach ($taxonomies as $taxonomy)
       {
+        $classes[] = 'taxonomy--' . $taxonomy;
         $post_type_terms = get_the_terms($post->ID, $taxonomy);
+
         if ($post_type_terms && !is_wp_error($post_type_terms))
         {
           foreach ($post_type_terms as $term)
           {
-            $classes[] = 'taxonomy-' . $taxonomy . ' term-' . $term->slug;
+            $classes[] = 'term--' . $term->slug;
           }
         }
       }

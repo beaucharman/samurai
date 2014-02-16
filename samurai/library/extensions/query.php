@@ -33,22 +33,27 @@
  *   http://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
  */
 
-class Samurai_Loop
+
+
+class Samurai_Query
 {
+
+
 
   function __construct()
   {
-    add_action('pre_get_posts', array(&$this, 'default_loop_output'));
+    /* Order all posts by title */
+    add_action('pre_get_posts', array(&$this, 'order_all_posts_by_title'));
   }
 
 
 
   /**
    *
-   * Set all posts to be sorted alphabetically
+   * Order all posts by title
    *
    */
-  function default_loop_output($query)
+  function order_all_posts_by_title($query)
   {
     global $wp_the_query;
 
@@ -70,4 +75,4 @@ class Samurai_Loop
 
 }
 
-new Samurai_Loop;
+new Samurai_Query;

@@ -26,6 +26,8 @@ class Samurai_Admin
     /**
      * Dashboard and login functions
      */
+    // add_action('admin_menu', array(&$this, 'remove_posts_from_menu'));
+
     add_filter('admin_footer_text', array(&$this, 'replace_admin_footer'));
 
     if (! SAMURAI_ENABLE_COMMENTS)
@@ -71,10 +73,13 @@ class Samurai_Admin
 
   /**
    *
-   * Dashboard and login functions
+   * Remove posts from menu
    *
    */
-
+  function remove_posts_from_menu()
+  {
+      remove_menu_page('edit.php');
+  }
 
 
   /**
@@ -161,27 +166,23 @@ class Samurai_Admin
   */
   function add_cpt_to_dashboard()
   {
-    $showTaxonomies = 1;
 
     /* Custom taxonomies counts */
-    if ($showTaxonomies)
+    $taxonomies = get_taxonomies(array('_builtin' => false), 'objects');
+
+    foreach ($taxonomies as $taxonomy)
     {
-      $taxonomies = get_taxonomies(array('_builtin' => false), 'objects');
+      $num_terms  = wp_count_terms($taxonomy->name);
+      $num = number_format_i18n($num_terms);
+      $text = _n($taxonomy->labels->singular_name, $taxonomy->labels->name, $num_terms);
+      $associated_post_type = $taxonomy->object_type;
 
-      foreach ($taxonomies as $taxonomy)
+      if (current_user_can('manage_categories'))
       {
-        $num_terms  = wp_count_terms($taxonomy->name);
-        $num = number_format_i18n($num_terms);
-        $text = _n($taxonomy->labels->singular_name, $taxonomy->labels->name, $num_terms);
-        $associated_post_type = $taxonomy->object_type;
-
-        if (current_user_can('manage_categories'))
-        {
-          $output = '<a href="edit-tags.php?taxonomy=' . $taxonomy->name . '&post_type=' . $associated_post_type[0] . '">' . $num . ' ' . $text . '</a>';
-        }
-
-        echo '<li class="taxonomy-count">' . $output . ' </li>';
+        $output = '<a href="edit-tags.php?taxonomy=' . $taxonomy->name . '&post_type=' . $associated_post_type[0] . '">' . $num . ' ' . $text . '</a>';
       }
+
+      echo '<li class="taxonomy-count">' . $output . ' </li>';
     }
 
     /* Custom post types counts */

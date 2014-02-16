@@ -16,8 +16,10 @@ class Samurai_Config {
 
 
 
-  function __construct()
+  public function __construct()
   {
+
+
 
     global $content_width;
 

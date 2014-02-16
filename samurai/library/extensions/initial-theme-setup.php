@@ -18,7 +18,7 @@ class Samurai_Setup
 
 
 
-  function __construct()
+  public function __construct()
   {
 
     /**

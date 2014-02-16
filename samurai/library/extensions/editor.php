@@ -17,7 +17,7 @@ class Samurai_Editor
 
 
 
-  function __construct()
+  public function __construct()
   {
 
     /**

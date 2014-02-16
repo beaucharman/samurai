@@ -15,7 +15,7 @@ class Samurai_Media
 
 
 
-  function __construct()
+  public function __construct()
   {
 
     /**

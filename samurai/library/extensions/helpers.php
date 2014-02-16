@@ -383,7 +383,7 @@ class Samurai_Helper
    * proper nouns, or more complex words, for example
    * knife -> knives, leaf -> leaves.
    */
-  public static function plurifypa_words($words)
+  public static function plurify_words($words)
   {
     if (strToLower(substr($words, -1)) == 'y')
     {
