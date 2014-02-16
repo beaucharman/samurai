@@ -7,7 +7,7 @@
  * @subpackage   samurai
  *
  * Taxonomy template page.
- * Custom taxonomy? Save this template page as taxonomy-{{slug}}.php
+ * Custom taxonomy? Save this template page as taxonomy-{slug}.php
  */
 
 global $wp_query;

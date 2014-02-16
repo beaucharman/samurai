@@ -7,7 +7,7 @@
  * @subpackage   samurai
  *
  * Single (built in Post or other custom post type) template page.
- * Custom post type? Save this template page as single-{{slug}}.php
+ * Custom post type? Save this template page as single-{slug}.php
  */
 
 get_header(); ?>

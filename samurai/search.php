@@ -26,8 +26,11 @@ get_header(); ?>
     <?php Samurai_Pagination::include_archive_pagination(); ?>
 
     <div class="search__follow-up--wrapper">
-      <p class="search__follow-up"><?php echo _e('Still not what you are looking for?'); ?></p>
+
+      <p class="search__follow-up">Still not what you are looking for?</p>
+
       <?php get_search_form(); ?>
+
     </div>
 
   <?php else : ?>

@@ -29,6 +29,7 @@ class Samurai_Route
 
 	public static function get($subject, $callback)
 	{
+		// Under construction
 		$callback();
 	}
 }
