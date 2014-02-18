@@ -13,7 +13,7 @@ get_header(); ?>
 
   <?php global $post, $wp_query; $post = $posts[0]; ?>
 
-  <h1 class="archive__heading content-heading"><?php Samurai_Snippet::get_archive_title(); ?></h1>
+  <h1 class="archive__heading content-heading"><?php echo Samurai_Snippet::get_archive_title(); ?></h1>
 
   <?php if (have_posts()) : ?>
 
@@ -23,7 +23,7 @@ get_header(); ?>
 
   <?php else : ?>
 
-    <?php Samurai_Snippet::get_view('message', 'no-posts'); ?>
+    <?php Samurai_View::make('message', 'no-posts'); ?>
 
   <?php endif; ?>
 

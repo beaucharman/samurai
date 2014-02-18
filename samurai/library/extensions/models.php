@@ -63,13 +63,13 @@ class Samurai_Model
     //
     // Example - Movie
     //
-    // global $Movie;
-    //
-    // $Movie = new Katana_Custom_Post_Type(
-    //   array(
-    //     'name' => 'movie'
-    //   )
-    // );
+    global $Movie;
+
+    $Movie = new Katana_Custom_Post_Type(
+      array(
+        'name' => 'movie'
+      )
+    );
 
   }
 
@@ -83,17 +83,17 @@ class Samurai_Model
   public static function create_taxonomies()
   {
 
-    //
+
     // Example - Genre
-    //
-    // global $Genre;
-    //
-    // $Genre = new Katana_Custom_Taxonomy(
-    //   array(
-    //     'name'      => 'genre',
-    //     'post_type' => 'movie'
-    //    )
-    // );
+
+    global $Genre;
+
+    $Genre = new Katana_Custom_Taxonomy(
+      array(
+        'name'      => 'genre',
+        'post_type' => 'movie'
+       )
+    );
 
   }
 

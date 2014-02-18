@@ -42,11 +42,12 @@ class Samurai_Route
 
 
 
-	function __construct()
-	{
-
-	}
-
+	/**
+	 * [redirect description]
+	 * @param  [type]  $target      [description]
+	 * @param  integer $status_code [description]
+	 * @return [type]               [description]
+	 */
 	public static function redirect($target, $status_code = 302)
 	{
 		wp_redirect($target, $status_code);
@@ -55,67 +56,145 @@ class Samurai_Route
 
 
 
-	public static function query($callback)
+	/**
+	 * [query description]
+	 * @param  [type] $condition [description]
+	 * @param  [type] $callback  [description]
+	 * @return [type]            [description]
+	 */
+	public static function query($condition, $callback)
 	{
-		add_action('pre_get_posts', $callback);
+		add_action('pre_get_posts', function() use ($condition, $callback)
+		{
+
+			global $wp_the_query, $query;
+
+			if ($wp_the_query && self::check($condition))
+			{
+				$callback($query);
+			}
+
+		});
 	}
 
 
 
-	public static function get($subject, $callback)
+	/**
+	 * [search description]
+	 * @param  {array} $array
+	 * @param  {string} $key
+	 * @param  {mixed} $value
+	 * @return {object}
+	 * http://stackoverflow.com/questions/1019076/how-to-search-by-key-value-in-a-multidimensional-array-in-php#answers
+	 */
+	private static function search($array, $key, $value)
 	{
+	  $results = array();
+	  self::search_r($array, $key, $value, $results);
+	  return $results;
+	}
 
-		add_action('pre_get_posts', function() use($subject, $callback) {
+
+
+	/**
+	 * [search_r description]
+	 * @param  {array} $array
+	 * @param  {string} $key
+	 * @param  {mixed} $value
+	 * @param  {array} $results
+	 * @return &$results
+	 */
+	private static function search_r($array, $key, $value, &$results)
+	{
+    if (! is_array($array)) {
+      return;
+    }
+
+    if (isset($array[$key]) && $array[$key] == $value) {
+      $results[] = $array;
+    }
+
+    foreach ($array as $subarray) {
+      self::search_r($subarray, $key, $value, $results);
+    }
+	}
+
+
+
+	private static function check($condition)
+	{
 
 		  global $wp_query;
 
 			if (! is_admin())
 			{
-				if (is_string($subject) && strpos($_SERVER['REQUEST_URI'], $subject) !== false)
+				if (is_string($condition) && strpos($_SERVER['REQUEST_URI'], $condition) !== false)
 				{
-					add_action('template_redirect', $callback);
+					return true;
 				}
-				elseif (is_array($subject))
+				elseif (is_array($condition))
 				{
 					$flag = true;
+					$query_array = (array)$wp_query;
 
-					foreach ($subject as $key => $value)
+					foreach ($condition as $key => $value)
 					{
-						if ($wp_query->query_vars[$key] != $value && $wp_query->query[$key] != $value && $wp_query->$key != $value)
+						if (! self::search($query_array, $key, $value))
 						{
 							$flag = false;
 							break;
 						}
 					}
 
-					if ($flag) add_action('template_redirect', $callback);
+					if ($flag) return true;
+
+					return false;
 				}
+
+				return false;
+			}
+
+			return false;
+
+	}
+
+
+
+
+	/**
+	 * get
+	 * @param  [type] $subject
+	 * @param  [type] $callback
+	 * @return [type]
+	 */
+	public static function get($condition, $callback)
+	{
+		add_action('pre_get_posts', function() use($condition, $callback)
+		{
+			if (self::check($condition))
+			{
+				add_action('template_redirect', $callback);
 			}
 		});
 	}
+
 }
 
 
 /**
  * Sample Get - wp_query conditions (a single movie type)
  */
-Samurai_Route::get(
-	array(
-		'post_type' => 'movie',
-		'is_single' => true
-	),
-	function ()
-	{
-		Samurai_View::template('movie/single');
-	}
-);
+Samurai_Route::get(array('post_type' => 'movie', 'is_archive' => true), function ()
+{
+	Samurai_View::template('movie/single');
+});
 
 
 
 /**
  * Sample Get - URI string redirection // todo regular expression / wild cards
  */
-Samurai_Route::get('/movie/*', function ()
+Samurai_Route::get('/movie/***', function ()
 {
 	Samurai_Route::redirect('/movies/');
 });
@@ -124,15 +203,11 @@ Samurai_Route::get('/movie/*', function ()
 /**
  * Order all posts all by title, ascending by default
  */
-Samurai_Route::query(function ($query)
+Samurai_Route::query('/', function ($query)
 {
-  global $wp_the_query;
-
-  if ($wp_the_query === $query && ! is_admin())
-  {
-    $query->set('orderby', 'title');
-    $query->set('order', 'ASC');
-  }
+	global $query;
+  $query->set('orderby', 'title');
+  $query->set('order', 'ASC');
 
   return $query;
 });

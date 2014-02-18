@@ -185,12 +185,10 @@ class Samurai_Snippet
 
   /**
    * Get Archive Title
-   *
-   * Samurai_Snippet::get_archive_title()
    * @param  null
    * @return string
    */
-  public static function get_archive_title($echo = true)
+  public static function get_archive_title()
   {
 
     global $wp_query;
@@ -238,43 +236,7 @@ class Samurai_Snippet
       $archive_title = _e('Article Archive');
     }
 
-    if ($echo == true)
-    {
-      echo $archive_title;
-    }
-
     return $archive_title;
-  }
-
-
-
-  /**
-   * Get Message
-   *
-   * Samurai_Snippet::get_message()
-   * @param  null
-   * @return string
-   *
-   * Function to get defined feedback and notification messages.
-   */
-  public static function get_message($handle = '')
-  {
-    get_template_part(SAMURAI_VIEWS_PATH . '/message', Samurai_Helper::urify_words($handle));
-  }
-
-
-
-  /**
-   * Get Loop
-   *
-   * Samurai_Snippet::get_loop()
-   * @param  null
-   * @return string
-   */
-  public static function get_loop($handle = '', $suffix = '')
-  {
-    $suffix = ($suffix) ? '-' . $suffix: '';
-    get_template_part(SAMURAI_VIEWS_PATH . '/loop' . $suffix, Samurai_Helper::urify_words($handle));
   }
 
 
