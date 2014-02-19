@@ -256,16 +256,18 @@ class Samurai_Snippet
 
 
   /**
-   * Adds a back to parent category, page, etc link
+   * Back To Parent Link
+   * @param {string} $label
    *
-   * Need to add functionality for post type, taxonomy,
+   * Adds a back to parent category, page, etc link
+   * Need to add functionality for child pages / swtich to return to term instead
    */
-  public static function back_to_parent_link()
+  public static function back_to_parent_link($label = null)
   {
     global $post;
-    $url = '';
-    $name = '';
-    $category = get_the_category();
+
+    $url = null;
+    $name = null;
 
     if (is_attachment())
     {
@@ -273,10 +275,10 @@ class Samurai_Snippet
       $url = get_permalink($post_parent->ID);
       $name = get_the_title($post_parent->ID);
     }
-    elseif (Samurai_Helper::is_post_type())
+    elseif (fcac_Helper::is_post_type())
     {
       $url = get_post_type_archive_link(get_post_type($post->ID));
-      $name = Samurai_Helper::prettify_words(Samurai_Helper::plurify_words(get_post_type(get_the_ID())));
+      $name = fcac_Helper::prettify_words(fcac_Helper::plurify_words(get_post_type(get_the_ID())));
     }
     else
     {
@@ -284,12 +286,18 @@ class Samurai_Snippet
       $name = get_bloginfo('name');
     }
 
+    if (! $label)
+    {
+      $label = '&larr; Back to ' . $name;
+    }
+
     if ($url && $name)
     {
-      echo '<a class="back-to-parent-link" title="Back to ' . $name . '" href="'
-        . $url . '">&larr; Back to ' . $name . '</a>';
+      echo '<a class="back-to-parent-link" title="' . $label . '" href="'
+        . $url . '">' . $label . '</a>';
     }
   }
+
 
 
 
