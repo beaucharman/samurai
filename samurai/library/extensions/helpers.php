@@ -177,7 +177,7 @@ class Samurai_Helper
   /**
    * Is Post Type
    *
-   * @param {string} $type
+   * @param {mixed array||string} $type
    * @return {boolean}
    *
    * Function to check if Custom Post Type.
@@ -186,18 +186,28 @@ class Samurai_Helper
   {
     global $post, $wp_query;
 
-    if ($type)
+    if (isset($wp_query->query['post_type']))
     {
-      if (isset($wp_query->post->ID) && $type == get_post_type($wp_query->post->ID))
+      if (! $type)
       {
         return true;
       }
-    }
-    else
-    {
-      if (isset($wp_query->post->ID) && get_post_type($wp_query->post->ID))
+      else
       {
-        return true;
+        if (is_string($type))
+        {
+          if ($wp_query->query['post_type'] == $type)
+          {
+            return true;
+          }
+        }
+        elseif (is_array($type))
+        {
+          if (in_array($wp_query->query['post_type'], $type))
+          {
+            return true;
+          }
+        }
       }
     }
 
