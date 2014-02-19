@@ -66,10 +66,9 @@ class Samurai_Route
 	{
 		add_action('pre_get_posts', function() use ($condition, $callback)
 		{
-
 			global $wp_the_query, $query;
 
-			if ($wp_the_query && self::check($condition))
+			if ($wp_the_query && Samurai_Route::check($condition))
 			{
 				$callback($query);
 			}
@@ -89,8 +88,7 @@ class Samurai_Route
 	{
 		add_action('pre_get_posts', function() use($condition, $callback)
 		{
-
-			if (self::check($condition))
+			if (Samurai_Route::check($condition))
 			{
 				add_action('template_redirect', $callback);
 			}
@@ -145,7 +143,7 @@ class Samurai_Route
 	 * @param  [type] $condition [description]
 	 * @return [type]            [description]
 	 */
-	private static function check($condition)
+	public static function check($condition)
 	{
 	  global $wp_query;
 
