@@ -57,38 +57,36 @@ class Samurai_Route
 
 
 	/**
-	 * [query description]
-	 * @param  [type] $condition [description]
-	 * @param  [type] $callback  [description]
-	 * @return [type]            [description]
+	 * query
+	 * @param  {array} $condition 
+	 * @param  {function} $callback  
+	 * @return            
 	 */
 	public static function query($condition, $callback)
 	{
-		add_action('pre_get_posts', function() use ($condition, $callback)
+		add_action('pre_get_posts', function($query) use ($condition, $callback)
 		{
-			global $wp_the_query, $query;
+			global $wp_the_query;
 
-			if ($wp_the_query && Samurai_Route::check($condition))
+			if ($wp_the_query && fcac_Route::check($condition))
 			{
 				$callback($query);
 			}
-
 		});
 	}
 
 
-
 	/**
 	 * get
-	 * @param  [type] $subject
-	 * @param  [type] $callback
-	 * @return [type]
+	 * @param  {array} $condition 
+	 * @param  {function} $callback  
+	 * @return 
 	 */
 	public static function get($condition, $callback)
 	{
 		add_action('pre_get_posts', function() use($condition, $callback)
 		{
-			if (Samurai_Route::check($condition))
+			if (fcac_Route::check($condition))
 			{
 				add_action('template_redirect', $callback);
 			}
@@ -98,50 +96,40 @@ class Samurai_Route
 
 
 	/**
-	 * [search description]
-	 * @param  {array} $array
-	 * @param  {string} $key
-	 * @param  {mixed} $value
-	 * @return {object}
-	 * http://stackoverflow.com/questions/1019076/how-to-search-by-key-value-in-a-multidimensional-array-in-php#answers
-	 */
-	private static function search($array, $key, $value)
-	{
-	  $results = array();
-	  self::search_r($array, $key, $value, $results);
-	  return $results;
-	}
-
-
-
-	/**
-	 * [search_r description]
+	 * search
 	 * @param  {array} $array
 	 * @param  {string} $key
 	 * @param  {mixed} $value
 	 * @param  {array} $results
 	 * @return &$results
 	 */
-	private static function search_r($array, $key, $value, &$results)
+	private static function search($array, $key, $value, &$results)
 	{
-    if (! is_array($array)) {
-      return;
-    }
+	    if (! is_array($array)) {
+	      return;
+	    }
 
-    if (isset($array[$key]) && $array[$key] == $value) {
-      $results[] = $array;
-    }
+	    if (isset($array[$key]))
+	    {
+	    	if (is_array($value) && in_array($array[$key], $value))
+	    	{
+	    		$results[] = $array;
+	    	}
+	    	elseif ($array[$key] == $value)
+	    	{
+	    		$results[] = $array;
+	    	}
+	    }
 
-    foreach ($array as $subarray) {
-      self::search_r($subarray, $key, $value, $results);
-    }
+	    foreach ($array as $subarray) {
+	      self::search($subarray, $key, $value, $results);
+	    }
 	}
 
-
 	/**
-	 * [check description]
-	 * @param  [type] $condition [description]
-	 * @return [type]            [description]
+	 * check
+	 * @param  {array} $condition 
+	 * @return [type]            
 	 */
 	public static function check($condition)
 	{
@@ -160,7 +148,10 @@ class Samurai_Route
 
 				foreach ($condition as $key => $value)
 				{
-					if (! self::search($query_array, $key, $value))
+					$results = array();
+					self::search($query_array, $key, $value, $results);
+
+					if (! $results)
 					{
 						$flag = false;
 						break;
@@ -169,10 +160,8 @@ class Samurai_Route
 
 				if ($flag) return true;
 
-				return false;
 			}
 
-			return false;
 		}
 
 		return false;
@@ -184,10 +173,10 @@ class Samurai_Route
 /**
  * Sample Get - wp_query conditions (a single movie type)
  */
-Samurai_Route::get(array('post_type' => 'page'), function ()
-{
-	Samurai_View::make('message-no-results');
-});
+// Samurai_Route::get(array('post_type' => 'page'), function ()
+// {
+// 	Samurai_View::make('message-no-results');
+// });
 
 
 
@@ -205,9 +194,6 @@ Samurai_Route::get(array('post_type' => 'page'), function ()
  */
 // Samurai_Route::query('/', function ($query)
 // {
-// 	global $query;
 //   $query->set('orderby', 'title');
 //   $query->set('order', 'ASC');
-
-//   return $query;
 // });
