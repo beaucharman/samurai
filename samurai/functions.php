@@ -93,6 +93,10 @@ require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/snippets.php');
    ====================================================== */
 require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/pagination.php');
 
+/* Assets
+   ====================================================== */
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/assets.php');
+
 /* Menus
    ====================================================== */
 require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/menus.php');

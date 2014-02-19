@@ -19,14 +19,14 @@ class Samurai_Asset
 	{
 
 		/**
-		 * Register and Enqeue local scripts
+		 * Register and Enqeue local JavaScripts
 		 */
-		add_action('wp_enqueue_scripts', array(&$this, 'load_scripts'));
+		add_action('wp_enqueue_scripts', array(&$this, 'load_javascripts'));
 
 		/**
-		 * Register and enqeue styles action
+		 * Register and enqeue stylesheets action
 		 */
-		add_action('init', array(&$this, 'load_styles'));
+		add_action('init', array(&$this, 'load_stylesheets'));
 
 		/**
 		 * Custom Editor Styles action
@@ -40,11 +40,11 @@ class Samurai_Asset
 		}
 
 		/**
-		* Custom Login Styles action
-		*
-		* This function styles the admin login screen with
-		* custom-login-style.css to match the theme style.
-		*/
+		 * Custom Login Styles action
+		 *
+		 * This function styles the admin login screen with
+		 * custom-login-style.css to match the theme style.
+		 */
 		if (SAMURAI_USE_CUSTOM_LOGIN_STYLES)
 		{
 			add_action('login_head', array(&$this, 'custom_login_styles'));
@@ -55,25 +55,25 @@ class Samurai_Asset
 
 	/**
  	 *
- 	 * Load Scripts
+ 	 * Load JavaScripts
 	 *
 	 */
-	static function load_scripts()
+	static function load_javascripts()
 	{
 		/**
-		* Register scripts here
-		*/
+		 * Register scripts here
+		 */
 		wp_register_script('samurai_modernizr', SAMURAI_FULL_SCRIPTS_PATH . '/vendor/modernizr.min.js', array(), '0.1', false);
 		wp_register_script('samurai_jquery', SAMURAI_FULL_SCRIPTS_PATH . '/vendor/jquery.min.js', array(), '0.1', true);
-		wp_register_script('google_jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', array(), '1.11.0', false);
+		wp_register_script('google_jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', array(), '1.11.0', true);
 		wp_register_script('samurai_plugins', SAMURAI_FULL_SCRIPTS_PATH . '/plugins.js', array(), SAMURAI_SCRIPTS_CACHE_BREAK, true);
 		wp_register_script('samurai_main', SAMURAI_FULL_SCRIPTS_PATH . '/main.js', array(), SAMURAI_SCRIPTS_CACHE_BREAK, true);
 
 
 
 		/**
-		* Enqueue frontend scripts here
-		*/
+	 	 * Enqueue frontend scripts here
+		 */
 		if (! is_admin())
 		{
 			/**
@@ -88,12 +88,12 @@ class Samurai_Asset
 			}
 
 			/* Modernizr */
-			// wp_enqueue_script('samurai_modernizr');
+			wp_enqueue_script('samurai_modernizr');
 
 			/**
-			* Load in separate scripts for development, change this to a concatenated
-			* file for deployment. See library/extentions/config.php
-			*/
+			 * Load in separate scripts for development, change this to a concatenated
+			 * file for deployment. See library/extentions/config.php
+			 */
 			if (SAMURAI_DEVELOPMENT_MODE)
 			{
 				/* jQuery */
@@ -105,14 +105,14 @@ class Samurai_Asset
 				wp_enqueue_script('samurai_plugins');
 
 				/**
-				* Enqueue other theme template scripts for developement,
-				* or contitional production scripts here.
-				*/
+				 * Enqueue other theme template scripts for developement,
+				 * or contitional production scripts here.
+				 */
 			}
 
 			/**
-			* Main project JavaScript
-			*/
+			 * Main project JavaScript
+			 */
 			wp_enqueue_script('samurai_main');
 		}
 	}
@@ -120,46 +120,46 @@ class Samurai_Asset
 
 
 	/**
-	*
-	* Load Styles
-	*
-	*/
-	static function load_styles()
+	 *
+	 * Load Stylesheets
+	 *
+	 */
+	static function load_stylesheets()
 	{
 		/**
-		* Register styles here
-		*/
+		 * Register styles here
+		 */
 		wp_register_style('samurai_main_stylesheet', SAMURAI_FULL_STYLES_PATH . '/main.css', array(), SAMURAI_STYLES_CACHE_BREAK);
 
 
 
 		/**
-		* Enqueue styles here
-		*/
+		 * Enqueue styles here
+		 */
 		if (! is_admin())
 		{
 			/**
-			*
-			* Front end stylesheets
-			*
-			*/
+			 *
+			 * Front end stylesheets
+			 *
+			 */
 
 			/* Main stylesheet */
 			wp_enqueue_style('samurai_main_stylesheet');
 
 			/**
-			* Enqueue theme styles here.
-			* Consider seperate files for development, then bundle into style.css
-			* for deployment. Conditional styles would be appropriate to be loaded here.
-			*/
+			 * Enqueue theme styles here.
+			 * Consider seperate files for development, then bundle into style.css
+			 * for deployment. Conditional styles would be appropriate to be loaded here.
+			 */
 		}
 		elseif (is_admin())
 		{
 			/**
-			*
-			* Admin stylesheets
-			*
-			*/
+			 *
+			 * Admin stylesheets
+			 *
+			 */
 
 			// Enqueue admin styles here.
 		}
@@ -168,13 +168,13 @@ class Samurai_Asset
 
 
 	/**
-	*
-	* Custom Login Styles
-	*
-	*/
+	 *
+	 * Custom Login Styles
+	 *
+	 */
 	static function custom_login_styles()
 	{
-		echo '<link rel="stylesheet" type="text/css" href="' . SAMURAI_FULL_STYLES_PATH . '/admin/custom-login-style.css">';
+		echo '<link rel="stylesheet" href="' . SAMURAI_FULL_STYLES_PATH . '/admin/custom-login-style.css">';
 	}
 
 }
