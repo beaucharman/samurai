@@ -80,6 +80,26 @@ class Samurai_Route
 
 
 	/**
+	 * get
+	 * @param  [type] $subject
+	 * @param  [type] $callback
+	 * @return [type]
+	 */
+	public static function get($condition, $callback)
+	{
+		add_action('pre_get_posts', function() use($condition, $callback)
+		{
+
+			if (self::check($condition))
+			{
+				add_action('template_redirect', $callback);
+			}
+		});
+	}
+
+
+
+	/**
 	 * [search description]
 	 * @param  {array} $array
 	 * @param  {string} $key
@@ -120,62 +140,44 @@ class Samurai_Route
 	}
 
 
-
+	/**
+	 * [check description]
+	 * @param  [type] $condition [description]
+	 * @return [type]            [description]
+	 */
 	private static function check($condition)
 	{
+	  global $wp_query;
 
-		  global $wp_query;
-
-			if (! is_admin())
+		if (! is_admin())
+		{
+			if (is_string($condition) && strpos($_SERVER['REQUEST_URI'], $condition) !== false)
 			{
-				if (is_string($condition) && strpos($_SERVER['REQUEST_URI'], $condition) !== false)
-				{
-					return true;
-				}
-				elseif (is_array($condition))
-				{
-					$flag = true;
-					$query_array = (array)$wp_query;
+				return true;
+			}
+			elseif (is_array($condition))
+			{
+				$flag = true;
+				$query_array = (array)$wp_query;
 
-					foreach ($condition as $key => $value)
+				foreach ($condition as $key => $value)
+				{
+					if (! self::search($query_array, $key, $value))
 					{
-						if (! self::search($query_array, $key, $value))
-						{
-							$flag = false;
-							break;
-						}
+						$flag = false;
+						break;
 					}
-
-					if ($flag) return true;
-
-					return false;
 				}
+
+				if ($flag) return true;
 
 				return false;
 			}
 
 			return false;
+		}
 
-	}
-
-
-
-
-	/**
-	 * get
-	 * @param  [type] $subject
-	 * @param  [type] $callback
-	 * @return [type]
-	 */
-	public static function get($condition, $callback)
-	{
-		add_action('pre_get_posts', function() use($condition, $callback)
-		{
-			if (self::check($condition))
-			{
-				add_action('template_redirect', $callback);
-			}
-		});
+		return false;
 	}
 
 }
@@ -184,9 +186,9 @@ class Samurai_Route
 /**
  * Sample Get - wp_query conditions (a single movie type)
  */
-Samurai_Route::get(array('post_type' => 'movie', 'is_archive' => true), function ()
+Samurai_Route::get(array('post_type' => 'page'), function ()
 {
-	Samurai_View::template('movie/single');
+	Samurai_View::make('message-no-results');
 });
 
 
@@ -194,20 +196,20 @@ Samurai_Route::get(array('post_type' => 'movie', 'is_archive' => true), function
 /**
  * Sample Get - URI string redirection // todo regular expression / wild cards
  */
-Samurai_Route::get('/movie/***', function ()
-{
-	Samurai_Route::redirect('/movies/');
-});
+// Samurai_Route::get('/movie/***', function ()
+// {
+// 	Samurai_Route::redirect('/movies/');
+// });
 
 
 /**
  * Order all posts all by title, ascending by default
  */
-Samurai_Route::query('/', function ($query)
-{
-	global $query;
-  $query->set('orderby', 'title');
-  $query->set('order', 'ASC');
+// Samurai_Route::query('/', function ($query)
+// {
+// 	global $query;
+//   $query->set('orderby', 'title');
+//   $query->set('order', 'ASC');
 
-  return $query;
-});
+//   return $query;
+// });
