@@ -15,6 +15,6 @@
 class Samurai_Cache
 {
 
- // coming soon...
+	// coming soon...
 
 }

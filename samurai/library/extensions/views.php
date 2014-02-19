@@ -28,12 +28,12 @@ class Samurai_View
 
 
 
-/**
- * Template
- * @param  {string} $base
- * @param  {string} $modifier
- * @return {string}
- */
+	/**
+	 * Template
+	 * @param  {string} $base
+	 * @param  {string} $modifier
+	 * @return {string}
+	 */
 	public static function template($base = '', $modifier = '')
 	{
 		self::make($base, $modifier);
