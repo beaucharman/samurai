@@ -11,38 +11,38 @@
 
 get_header(); ?>
 
-<?php if (SAMURAI_ENABLE_SITE_SEARCH) : ?>
+	<?php if (SAMURAI_ENABLE_SITE_SEARCH) : ?>
 
-  <?php global $wp_query; $total_results = $wp_query->found_posts; ?>
+		<?php global $wp_query; $total_results = $wp_query->found_posts; ?>
 
-  <h1 class="search__heading content-title">Search Results</h1>
+		<h1 class="search__heading content-title">Search Results</h1>
 
-  <p class="search__query"><?php echo $total_results ?> result<?php if ($total_results != 1) echo 's'; ?>found for the search term: <span><?php echo esc_html($s, 1); ?></span></p>
+		<p class="search__query"><?php echo $total_results ?> result<?php if ($total_results != 1) echo 's'; ?>found for the search term: <span><?php echo esc_html($s, 1); ?></span></p>
 
-  <?php if (have_posts()) : ?>
+		<?php if (have_posts()) : ?>
 
-    <?php Samurai_View::make('loop-search'); ?>
+			<?php Samurai_View::make('loop-search'); ?>
 
-    <?php Samurai_Pagination::include_archive_pagination(); ?>
+			<?php Samurai_Pagination::include_archive_pagination(); ?>
 
-    <div class="search__follow-up--wrapper">
+			<div class="search__follow-up--wrapper">
 
-      <p class="search__follow-up">Still not what you are looking for?</p>
+				<p class="search__follow-up">Still not what you are looking for?</p>
 
-      <?php get_search_form(); ?>
+				<?php get_search_form(); ?>
 
-    </div>
+			</div>
 
-  <?php else : ?>
+		<?php else : ?>
 
-    <?php Samurai_View::make('message', 'no-results'); ?>
+			<?php Samurai_View::make('message', 'no-results'); ?>
 
-  <?php endif; ?>
+		<?php endif; ?>
 
-<?php else : ?>
+	<?php else : ?>
 
-  <?php Samurai_Snippet::get_message('not-found'); ?>
+		<?php Samurai_Snippet::get_message('not-found'); ?>
 
-<?php endif; ?>
+	<?php endif; ?>
 
 <?php get_footer(); ?>

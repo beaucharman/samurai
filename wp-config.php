@@ -22,24 +22,24 @@ $current_server_name = $_SERVER['SERVER_NAME'];
  * Production environment
  *
  */
- $server_credentials['production'] = array(
+$server_credentials['production'] = array(
 
-  /* Production server name */
-  'server_name' => '',
+	/* Production server name */
+	'server_name' => '',
 
-  /* Production options */
-  'options' => array(
-    'db_name'           => '',
-    'db_user'           => '',
-    'db_password'       => '',
-    'db_host'           => '',
-    'wp_debug'          => false,
-    'wp_debug_log'      => false,
-    'wp_debug_display'  => false,
-    'wp_env'            => 'production',
-    'wp_home'           => null,
-    'wp_siteurl'        => null
-  )
+	/* Production options */
+	'options' => array(
+		'db_name'           => '',
+		'db_user'           => '',
+		'db_password'       => '',
+		'db_host'           => '',
+		'wp_debug'          => false,
+		'wp_debug_log'      => false,
+		'wp_debug_display'  => false,
+		'wp_env'            => 'production',
+		'wp_home'           => null,
+		'wp_siteurl'        => null
+	)
 );
 
 /**
@@ -47,24 +47,24 @@ $current_server_name = $_SERVER['SERVER_NAME'];
  * Staging environment
  *
  */
- $server_credentials['staging'] = array(
+$server_credentials['staging'] = array(
 
-  /* Staging server name */
-  'server_name' => '',
+	/* Staging server name */
+	'server_name' => '',
 
-  /* Staging options */
-  'options' => array(
-    'db_name'           => '',
-    'db_user'           => '',
-    'db_password'       => '',
-    'db_host'           => '',
-    'wp_debug'          => false,
-    'wp_debug_log'      => false,
-    'wp_debug_display'  => false,
-    'wp_env'            => 'staging',
-    'wp_home'           => null,
-    'wp_siteurl'        => null
-  )
+	/* Staging options */
+	'options' => array(
+		'db_name'           => '',
+		'db_user'           => '',
+		'db_password'       => '',
+		'db_host'           => '',
+		'wp_debug'          => false,
+		'wp_debug_log'      => false,
+		'wp_debug_display'  => false,
+		'wp_env'            => 'staging',
+		'wp_home'           => null,
+		'wp_siteurl'        => null
+	)
 );
 
 /**
@@ -74,22 +74,22 @@ $current_server_name = $_SERVER['SERVER_NAME'];
  */
 $server_credentials['development'] = array(
 
-  /* StagDevelopmenting server name */
-  'server_name' => '',
+	/* StagDevelopmenting server name */
+	'server_name' => '',
 
-  /* Development options */
-  'options' => array(
-    'db_name'           => '',
-    'db_user'           => '',
-    'db_password'       => '',
-    'db_host'           => '',
-    'wp_debug'          => true,
-    'wp_debug_log'      => true,
-    'wp_debug_display'  => false,
-    'wp_env'            => 'development',
-    'wp_home'           => null,
-    'wp_siteurl'        => null
-  )
+	/* Development options */
+	'options' => array(
+		'db_name'           => '',
+		'db_user'           => '',
+		'db_password'       => '',
+		'db_host'           => '',
+		'wp_debug'          => true,
+		'wp_debug_log'      => true,
+		'wp_debug_display'  => false,
+		'wp_env'            => 'development',
+		'wp_home'           => null,
+		'wp_siteurl'        => null
+	)
 );
 
 /**
@@ -97,10 +97,10 @@ $server_credentials['development'] = array(
  */
 foreach ($server_credentials as $server)
 {
-  if (strpos($current_server_name, $server['server_name']) !== false)
-  {
-    $options = $server['options']; break;
-  }
+	if (strpos($current_server_name, $server['server_name']) !== false)
+	{
+		$options = $server['options']; break;
+	}
 }
 
 /**
@@ -108,25 +108,25 @@ foreach ($server_credentials as $server)
  */
 if ($options)
 {
-  /* Database credentials */
-  define('DB_NAME', $options['db_name']);
-  define('DB_USER', $options['db_user']);
-  define('DB_PASSWORD', $options['db_password']);
-  define('DB_HOST', $options['db_host']);
+	/* Database credentials */
+	define('DB_NAME', $options['db_name']);
+	define('DB_USER', $options['db_user']);
+	define('DB_PASSWORD', $options['db_password']);
+	define('DB_HOST', $options['db_host']);
 
-  /* Debug settings */
-  define('WP_DEBUG', $options['wp_debug']);
-  define('WP_DEBUG_LOG', $options['wp_debug_log']);
-  define('WP_DEBUG_DISPLAY', $options['wp_debug_display']);
+	/* Debug settings */
+	define('WP_DEBUG', $options['wp_debug']);
+	define('WP_DEBUG_LOG', $options['wp_debug_log']);
+	define('WP_DEBUG_DISPLAY', $options['wp_debug_display']);
 
-  /* Environment options*/
-  define('WP_ENV', $options['wp_env']);
-  if ($options['wp_siteurl']) define('WP_SITEURL', $options['wp_siteurl']);
-  if ($options['wp_home']) define('WP_HOME', $options['wp_home']);
+	/* Environment options*/
+	define('WP_ENV', $options['wp_env']);
+	if ($options['wp_siteurl']) define('WP_SITEURL', $options['wp_siteurl']);
+	if ($options['wp_home']) define('WP_HOME', $options['wp_home']);
 }
 else
 {
-  die('Sorry, no appropriate database credentials were found. Make sure your `$server_credentials` are set correctly.');
+	die('Sorry, no appropriate database credentials were found. Make sure your `$server_credentials` are set correctly.');
 }
 
 /* End of server and deployment credentials */
@@ -207,7 +207,7 @@ define('WPLANG', '');
 
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
-  define('ABSPATH', dirname(__FILE__) . '/');
+	define('ABSPATH', dirname(__FILE__) . '/');
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');

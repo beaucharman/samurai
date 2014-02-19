@@ -11,20 +11,20 @@
 
 get_header(); ?>
 
-  <?php global $post, $wp_query; $post = $posts[0]; ?>
+	<?php global $post, $wp_query; $post = $posts[0]; ?>
 
-  <h1 class="archive__heading content-heading"><?php echo Samurai_Snippet::get_archive_title(); ?></h1>
+	<h1 class="archive__heading content-heading"><?php echo Samurai_Snippet::get_archive_title(); ?></h1>
 
-  <?php if (have_posts()) : ?>
+	<?php if (have_posts()) : ?>
 
-    <?php Samurai_View::make('loop-archive', get_post_type($post->ID)); ?>
+		<?php Samurai_View::make('loop-archive', get_post_type($post->ID)); ?>
 
-    <?php Samurai_Pagination::include_archive_pagination(); ?>
+		<?php Samurai_Pagination::include_archive_pagination(); ?>
 
-  <?php else : ?>
+	<?php else : ?>
 
-    <?php Samurai_View::make('message', 'no-posts'); ?>
+		<?php Samurai_View::make('message', 'no-posts'); ?>
 
-  <?php endif; ?>
+	<?php endif; ?>
 
 <?php get_footer(); ?>

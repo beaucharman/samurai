@@ -15,22 +15,22 @@ $taxonomy_term = $wp_query->get_queried_object();
 
 get_header(); ?>
 
-  <h1 class="term__heading content-title"><?php echo $taxonomy_term->name; ?></h1>
+	<h1 class="term__heading content-title"><?php echo $taxonomy_term->name; ?></h1>
 
-  <?php if (term_description()) : ?>
-  <p class="term-description"><?php remove_filter('term_description','wpautop'); echo term_description(); ?></p>
-  <?php endif; ?>
+	<?php if (term_description()) : ?>
+	<p class="term-description"><?php remove_filter('term_description','wpautop'); echo term_description(); ?></p>
+	<?php endif; ?>
 
-  <?php if (have_posts()) : ?>
+	<?php if (have_posts()) : ?>
 
-    <?php Samurai_View::make('loop-taxonomy', $taxonomy_term->slug); ?>
+		<?php Samurai_View::make('loop-taxonomy', $taxonomy_term->slug); ?>
 
-    <?php Samurai_Pagination::include_archive_pagination(); ?>
+		<?php Samurai_Pagination::include_archive_pagination(); ?>
 
-  <?php else : ?>
+	<?php else : ?>
 
-    <?php Samurai_View::make('message', 'not-found'); ?>
+		<?php Samurai_View::make('message', 'not-found'); ?>
 
-  <?php endif; ?>
+	<?php endif; ?>
 
 <?php get_footer(); ?>

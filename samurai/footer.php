@@ -7,19 +7,22 @@
  * @subpackage   samurai
  */
 ?>
-      </main> <!-- /.page-content -->
+			</main> <!-- /.page-content -->
 
-      <footer class="page-footer" role="contentinfo">
+			<footer class="page-footer" role="contentinfo">
 
-        <?php /* Site information  */?>
-        <div class="page-footer__information site-information">
-          <span>&copy;<?php echo date('Y'); ?>&nbsp;<?php echo bloginfo('name'); ?></span>
-        </div>
+				<div class="page-footer__information site-information">
 
-      </footer>
+					<span>&copy;<?php echo date('Y'); ?>&nbsp;<?php echo bloginfo('name'); ?></span>
 
-    </div> <!-- /.page-wrap -->
+				</div>
 
-    <?php wp_footer(); ?>
-  </body>
+			</footer>
+
+		</div> <!-- /.page-wrap -->
+
+		<?php wp_footer(); ?>
+
+	</body>
+
 </html>

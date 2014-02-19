@@ -25,100 +25,100 @@ class Samurai_Model
 
 
 
-  public function __construct()
-  {
+	public function __construct()
+	{
 
-    /**
-     * Include Font Awesome
-     */
-    // Katana_Custom_Post_Type::get_font_awesome();
+		/**
+		 * Include Font Awesome
+		 */
+		// Katana_Custom_Post_Type::get_font_awesome();
 
-    /**
-     * register post types
-     */
-    self::create_post_types();
+		/**
+		 * register post types
+		 */
+		self::create_post_types();
 
-    /**
-     * register taxonomies
-     */
-    self::create_taxonomies();
+		/**
+		 * register taxonomies
+		 */
+		self::create_taxonomies();
 
-    /**
-     * register menus
-     */
-    self::create_menus();
+		/**
+		 * register menus
+		 */
+		self::create_menus();
 
-  }
-
-
-
-  /**
-   *
-   * Create Post Types
-   *
-   */
-  public static function create_post_types()
-  {
-
-
-    // Example - Movie
-
-    // global $Movie;
-    //
-    // $Movie = new Katana_Custom_Post_Type(
-    //   array(
-    //     'name' => 'movie'
-    //   )
-    // );
-
-  }
+	}
 
 
 
-  /**
-   *
-   * Create Taxonomies
-   *
-   */
-  public static function create_taxonomies()
-  {
+	/**
+	 *
+	 * Create Post Types
+	 *
+	 */
+	public static function create_post_types()
+	{
 
 
-    // Example - Genre
+		// Example - Movie
 
-    // global $Genre;
-    //
-    // $Genre = new Katana_Custom_Taxonomy(
-    //   array(
-    //     'name'      => 'genre',
-    //     'post_type' => 'movie'
-    //    )
-    // );
+		// global $Movie;
+		//
+		// $Movie = new Katana_Custom_Post_Type(
+		// 	array(
+		// 		'name' => 'movie'
+		// 	)
+		// );
 
-  }
-
+	}
 
 
-  /**
-   *
-   * Create Menus
-   *
-   */
-  public static function create_menus()
-  {
 
-    /**
-     * Main Navigation Menu
-     */
-    global $Main_Navigation_Menu;
+	/**
+	 *
+	 * Create Taxonomies
+	 *
+	 */
+	public static function create_taxonomies()
+	{
 
-    $Main_Navigation_Menu = new Samurai_Menu(
-      array(
-       'name' => 'Main Navigation Menu'
-      )
-    );
 
-  }
+		// Example - Genre
+
+		// global $Genre;
+
+		// $Genre = new Katana_Custom_Taxonomy(
+		// 	array(
+		// 		'name'      => 'genre',
+		// 		'post_type' => 'movie'
+		// 	)
+		// );
+
+	}
+
+
+
+	/**
+	 *
+	 * Create Menus
+	 *
+	 */
+	public static function create_menus()
+	{
+
+		/**
+		* Main Navigation Menu
+		*/
+		global $Main_Navigation_Menu;
+
+		$Main_Navigation_Menu = new Samurai_Menu(
+			array(
+				'name' => 'Main Navigation Menu'
+			)
+		);
+
+	}
 
 }
 

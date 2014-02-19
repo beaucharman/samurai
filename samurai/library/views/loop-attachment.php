@@ -13,24 +13,24 @@
 
 <article <?php post_class('article article__attachment attachment post-' . get_the_ID()); ?>>
 
-  <h1 class="article__title article__attachment--title"><?php the_title(); ?></h1>
+	<h1 class="article__title article__attachment--title"><?php the_title(); ?></h1>
 
-  <?php Samurai_Snippet::include_post_meta(); ?>
+	<?php Samurai_Snippet::include_post_meta(); ?>
 
-  <?php if ($post->post_content) : ?>
-  <p class="attachment-description"><?php echo $post->post_content; ?><p>
-  <?php endif; ?>
+	<?php if ($post->post_content) : ?>
+	<p class="attachment-description"><?php echo $post->post_content; ?><p>
+	<?php endif; ?>
 
-  <figure class="attachment-figure">
-    <?php echo wp_get_attachment_image($post->ID, 'full'); ?>
-    <?php if ($post->post_excerpt) : ?>
-    <figcaption class="attachment__figcaption"><?php echo $post->post_excerpt; ?></figcaption>
-    <?php endif; ?>
-  </figure>
+	<figure class="attachment-figure">
+		<?php echo wp_get_attachment_image($post->ID, 'full'); ?>
+		<?php if ($post->post_excerpt) : ?>
+		<figcaption class="attachment__figcaption"><?php echo $post->post_excerpt; ?></figcaption>
+		<?php endif; ?>
+	</figure>
 
-  <footer class="article__footer">
-    <?php Samurai_Snippet::back_to_parent_link(); ?>
-  </footer>
+	<footer class="article__footer">
+		<?php Samurai_Snippet::back_to_parent_link(); ?>
+	</footer>
 
 </article>
 

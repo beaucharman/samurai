@@ -11,6 +11,6 @@
 
 get_header(); ?>
 
-  <?php Samurai_View::make('message', 'not-found'); ?>
+	<?php Samurai_View::make('message', 'not-found'); ?>
 
 <?php get_footer(); ?>

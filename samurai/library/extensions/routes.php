@@ -58,9 +58,9 @@ class Samurai_Route
 
 	/**
 	 * query
-	 * @param  {array} $condition 
-	 * @param  {function} $callback  
-	 * @return            
+	 * @param  {array} $condition
+	 * @param  {function} $callback
+	 * @return
 	 */
 	public static function query($condition, $callback)
 	{
@@ -68,7 +68,7 @@ class Samurai_Route
 		{
 			global $wp_the_query;
 
-			if ($wp_the_query && fcac_Route::check($condition))
+			if ($wp_the_query && Samurai_Route::check($condition))
 			{
 				$callback($query);
 			}
@@ -78,15 +78,15 @@ class Samurai_Route
 
 	/**
 	 * get
-	 * @param  {array} $condition 
-	 * @param  {function} $callback  
-	 * @return 
+	 * @param  {array} $condition
+	 * @param  {function} $callback
+	 * @return
 	 */
 	public static function get($condition, $callback)
 	{
 		add_action('pre_get_posts', function() use($condition, $callback)
 		{
-			if (fcac_Route::check($condition))
+			if (Samurai_Route::check($condition))
 			{
 				add_action('template_redirect', $callback);
 			}
@@ -105,35 +105,37 @@ class Samurai_Route
 	 */
 	private static function search($array, $key, $value, &$results)
 	{
-	    if (! is_array($array)) {
-	      return;
-	    }
+		if (! is_array($array))
+		{
+			return;
+		}
 
-	    if (isset($array[$key]))
-	    {
-	    	if (is_array($value) && in_array($array[$key], $value))
-	    	{
-	    		$results[] = $array;
-	    	}
-	    	elseif ($array[$key] == $value)
-	    	{
-	    		$results[] = $array;
-	    	}
-	    }
+		if (isset($array[$key]))
+		{
+			if (is_array($value) && in_array($array[$key], $value))
+			{
+				$results[] = $array;
+			}
+			elseif ($array[$key] == $value)
+			{
+				$results[] = $array;
+			}
+		}
 
-	    foreach ($array as $subarray) {
-	      self::search($subarray, $key, $value, $results);
-	    }
+		foreach ($array as $subarray)
+		{
+			self::search($subarray, $key, $value, $results);
+		}
 	}
 
 	/**
 	 * check
-	 * @param  {array} $condition 
-	 * @return [type]            
+	 * @param  {array} $condition
+	 * @return [type]
 	 */
 	public static function check($condition)
 	{
-	  global $wp_query;
+		global $wp_query;
 
 		if (! is_admin())
 		{

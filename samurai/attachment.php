@@ -11,14 +11,14 @@
 
 get_header(); ?>
 
-  <?php if (have_posts()) : ?>
+	<?php if (have_posts()) : ?>
 
-    <?php Samurai_View::make('loop-attachment'); ?>
+		<?php Samurai_View::make('loop-attachment'); ?>
 
-  <?php else : ?>
+	<?php else : ?>
 
-    <?php Samurai_View::make('message', 'not-found'); ?>
+		<?php Samurai_View::make('message', 'not-found'); ?>
 
-  <?php endif; ?>
+	<?php endif; ?>
 
 <?php get_footer(); ?>

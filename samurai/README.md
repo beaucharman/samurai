@@ -2,12 +2,12 @@
 
 ## Team
 
-  {name} -- {role} -- {twitter}
+	{name} -- {role} -- {twitter}
 
 ## Technology Colophon
 
-  HTML5, CSS3
-  
-  Normalize.css, jQuery, Modernizr
-  
-  _Plugins required_
+	HTML5, CSS3
+
+	Normalize.css, jQuery, Modernizr
+
+	_Plugins required_
