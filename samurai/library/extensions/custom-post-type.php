@@ -27,326 +27,321 @@
 
 
 
-/* ======================================================
-   Custom Post Type class
-   ====================================================== */
-
-
-
 class Katana_Custom_Post_Type
 {
 
 
 
-  public $name;
-  public $labels;
-  public $options;
-  public $icon;
-  public $help;
+	public $name;
+	public $labels;
+	public $options;
+	public $icon;
+	public $help;
 
 
 
-  /**
-   * Class Constructor
-   *
-   * @param  {array}   $args
-   * @return {instance} post type
-   */
-  public function __construct($args)
-  {
-    /**
-     * Set class values
-     */
-    if (! is_array($args))
-    {
-      $name = $args;
-      $args = array();
-    }
-    else
-    {
-      $name = $args['name'];
-    }
+	/**
+	 * Class Constructor
+	 *
+	 * @param  {array}   $args
+	 * @return {instance} post type
+	 */
+	public function __construct($args)
+	{
+		/**
+		 * Set class values
+		 */
+		if (! is_array($args))
+		{
+			$name = $args;
+			$args = array();
+		}
+		else
+		{
+			$name = $args['name'];
+		}
 
-    $args = array_merge(
-      array(
-        'name'      => $this->uglify_words($name),
-        'labels'    => array(),
-        'options'   => array(),
-        'menu_icon' => null,
-        'help'      => null
-      ),
-      $args
-    );
+		$args = array_merge(
+			array(
+				'name'      => $this->uglify_words($name),
+				'labels'    => array(),
+				'options'   => array(),
+				'menu_icon' => null,
+				'help'      => null
+			),
+			$args
+		);
 
-    $this->name = $args['name'];
-    $this->labels = $args['labels'];
-    $this->options = $args['options'];
-    $this->icon = $args['menu_icon'];
-    $this->help = $args['help'];
+		$this->name = $args['name'];
+		$this->labels = $args['labels'];
+		$this->options = $args['options'];
+		$this->icon = $args['menu_icon'];
+		$this->help = $args['help'];
 
-    /**
-     * Create the labels where needed
-     */
+		/**
+		 * Create the labels where needed
+		 */
 
-    /* Post type singluar label */
-    if (! isset($this->labels['singular']))
-    {
-      $this->labels['singular'] = $this->prettify_words($this->name);
-    }
+		/* Post type singluar label */
+		if (! isset($this->labels['singular']))
+		{
+			$this->labels['singular'] = $this->prettify_words($this->name);
+		}
 
-    /* Post type plural label */
-    if (! isset($this->labels['plural']))
-    {
-      $this->labels['plural'] = $this->plurify_words($this->labels['singular']);
-    }
+		/* Post type plural label */
+		if (! isset($this->labels['plural']))
+		{
+			$this->labels['plural'] = $this->plurify_words($this->labels['singular']);
+		}
 
-    /* Post type menu label */
-    if (! isset($this->labels['menu']))
-    {
-      $this->labels['menu'] = $this->labels['plural'];
-    }
+		/* Post type menu label */
+		if (! isset($this->labels['menu']))
+		{
+			$this->labels['menu'] = $this->labels['plural'];
+		}
 
-    /**
-     * If the post type doesn't already exist, create it!
-     */
-    if (! post_type_exists($this->name))
-    {
-      add_action('init', array(&$this, 'register_custom_post_type'));
+		/**
+		* If the post type doesn't already exist, create it!
+		*/
+		if (! post_type_exists($this->name))
+		{
+			add_action('init', array(&$this, 'register_custom_post_type'));
 
-      if ($this->help)
-      {
-        add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
-      }
+			if ($this->help)
+			{
+				add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
+			}
 
-      if ($this->icon)
-      {
-        add_action('admin_head', array(&$this, 'icon_style'));
-      }
-    }
-  }
-
-
-  /**
-   * Register Custom Post Type
-   *
-   * @param  {null}
-   * @return post type
-   */
-  public function register_custom_post_type()
-  {
-    /**
-     * Set up the post type labels
-     */
-    $labels = array(
-      'name'               => __($this->labels['plural']),
-      'singular_name'      => __($this->labels['singular']),
-      'menu_name'          => __($this->labels['menu']),
-      'add_new_item'       => __('Add New ' . $this->labels['singular']),
-      'edit_item'          => __('Edit ' . $this->labels['singular']),
-      'new_item'           => __('New ' . $this->labels['singular']),
-      'all_items'          => __('All ' . $this->labels['plural']),
-      'view_item'          => __('View ' . $this->labels['singular']),
-      'search_items'       => __('Search ' . $this->labels['plural']),
-      'not_found'          => __('No ' . $this->labels['plural'] . ' found'),
-      'not_found_in_trash' => __('No ' . $this->labels['plural'] . ' found in Trash')
-    );
-
-    /**
-     * Configure the post type options
-     */
-    $options = array_merge(
-      array(
-        'has_archive'   => true,
-        'labels'        => $labels,
-        'menu_icon'     => null,
-        'menu_position' => 4,
-        'public'        => true,
-        'rewrite'       => array('slug' => $this->get_slug()),
-        'supports'      => array('title', 'editor', 'thumbnail', 'revisions')
-      ),
-      $this->options
-    );
-
-    /**
-     * Register the new post type
-     */
-    register_post_type($this->name, $options);
-  }
+			if ($this->icon)
+			{
+				add_action('admin_head', array(&$this, 'icon_style'));
+			}
+		}
+	}
 
 
+	/**
+	 * Register Custom Post Type
+	 *
+	 * @param  {null}
+	 * @return post type
+	 */
+	public function register_custom_post_type()
+	{
+		/**
+		 * Set up the post type labels
+		 */
+		$labels = array(
+			'name'               => __($this->labels['plural']),
+			'singular_name'      => __($this->labels['singular']),
+			'menu_name'          => __($this->labels['menu']),
+			'add_new_item'       => __('Add New ' . $this->labels['singular']),
+			'edit_item'          => __('Edit ' . $this->labels['singular']),
+			'new_item'           => __('New ' . $this->labels['singular']),
+			'all_items'          => __('All ' . $this->labels['plural']),
+			'view_item'          => __('View ' . $this->labels['singular']),
+			'search_items'       => __('Search ' . $this->labels['plural']),
+			'not_found'          => __('No ' . $this->labels['plural'] . ' found'),
+			'not_found_in_trash' => __('No ' . $this->labels['plural'] . ' found in Trash')
+		);
 
-  /**
-   * Add Custom Contextual Help
-   *
-   * @param  $contextual_help
-   * @param  $screen_id
-   * @param  $screen
-   * @return $contextual_help
-   */
-  public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
-  {
-    foreach ($this->help as $help)
-    {
-      if (! $help['context'])
-      {
-        $context = $this->name;
-      }
-      else
-      {
-        $context = $help['context'] . '-' . $this->name;
-      }
+		/**
+	 	 * Configure the post type options
+		 */
+		$options = array_merge(
+			array(
+				'has_archive'   => true,
+				'labels'        => $labels,
+				'menu_icon'     => null,
+				'menu_position' => 4,
+				'public'        => true,
+				'rewrite'       => array('slug' => $this->get_slug()),
+				'supports'      => array('title', 'editor', 'thumbnail', 'revisions')
+			),
+			$this->options
+		);
 
-      if ($context == $screen->id)
-      {
-        $contextual_help = $help['message'];
-      }
-    }
-
-    return $contextual_help;
-  }
+		/**
+		 * Register the new post type
+		 */
+		register_post_type($this->name, $options);
+	}
 
 
 
-  /**
-   * Get
-   *
-   * @param  {array}   $user_args
-   * @param  {boolean} $single
-   * @return {array}   post type data
-   *
-   * Get all entries assigned to this post type.
-   */
-  public function get($user_args = array(), $single = false)
-  {
-    $args = array_merge(
-      array(
-        'posts_per_page' => -1,
-        'orderby'        => 'title',
-        'order'          => 'ASC',
-        'post_type'      => $this->name,
-        'post_status'    => 'publish'
-      ),
-      $user_args
-    );
+	/**
+	 * Add Custom Contextual Help
+	 *
+	 * @param  $contextual_help
+	 * @param  $screen_id
+	 * @param  $screen
+	 * @return $contextual_help
+	 */
+	public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
+	{
+		foreach ($this->help as $help)
+		{
+			if (! $help['context'])
+			{
+				$context = $this->name;
+			}
+			else
+			{
+				$context = $help['context'] . '-' . $this->name;
+			}
 
-    $items = get_posts($args);
+			if ($context == $screen->id)
+			{
+			$contextual_help = $help['message'];
+			}
+		}
 
-    if ($single)
-    {
-      return $items[0];
-    }
-
-    return $items;
-  }
+		return $contextual_help;
+	}
 
 
 
-  /**
-   * Get Slug
-   *
-   * @param  {string} $name
-   * @return {string}
-   */
-  public function get_slug($name = null)
-  {
-    if (! $name)
-    {
-      $name = $this->name;
-    }
+	/**
+	 * Get
+	 *
+	 * @param  {array}   $user_args
+	 * @param  {boolean} $single
+	 * @return {array}   post type data
+	 *
+	 * Get all entries assigned to this post type.
+	 */
+	public function get($user_args = array(), $single = false)
+	{
+		$args = array_merge(
+			array(
+				'posts_per_page' => -1,
+				'orderby'        => 'title',
+				'order'          => 'ASC',
+				'post_type'      => $this->name,
+				'post_status'    => 'publish'
+			),
+			$user_args
+		);
 
-    return strtolower(str_replace(' ', '-', str_replace('_', '-', $name)));
-  }
+		$items = get_posts($args);
 
+		if ($single)
+		{
+			return $items[0];
+		}
 
-
-  /**
-   * Prettify Words
-   *
-   * @param  {string} $words
-   * @return {string}
-   *
-   * Creates a pretty version of a string, like a pug version of a dog.
-   */
-  public function prettify_words($words)
-  {
-    return ucwords(str_replace('_', ' ', $words));
-  }
-
-
-
-  /**
-   * Uglify Words
-   *
-   * @param  {string} $words
-   * @return {string}
-   *
-   * Creates a url firendly version of the given string.
-   */
-  public function uglify_words($words)
-  {
-    return strToLower(str_replace(' ', '_', $words));
-  }
+		return $items;
+	}
 
 
 
-  /**
-   * Plurify Words
-   *
-   * @param  {string} $words
-   * @return {string}
-   *
-   * Plurifies most common words. Not currently working proper nouns,
-   * or more complex words, for example knife => knives, leaf => leaves.
-   */
-  public function plurify_words($words)
-  {
-    if (strToLower(substr($words, -1)) == 'y')
-    {
-      return substr_replace($words, 'ies', -1);
-    }
+	/**
+	 * Get Slug
+	 *
+	 * @param  {string} $name
+	 * @return {string}
+	 */
+	public function get_slug($name = null)
+	{
+		if (! $name)
+		{
+			$name = $this->name;
+		}
 
-    if (strToLower(substr($words, -1)) == 's')
-    {
-      return $words . 'es';
-    }
-
-    return $words . 's';
-  }
+		return strtolower(str_replace(' ', '-', str_replace('_', '-', $name)));
+	}
 
 
 
-  /**
-   * Icon Style
-   *
-   * @param  {null}
-   * @return {output} html
-   */
-  public function icon_style() { ?>
-    <style rel="stylesheet" media="screen">
-    #adminmenu .menu-icon-<?php echo $this->name; ?> div.wp-menu-image:before {
-      font-family: 'FontAwesome' !important;
-      content: '\<?php echo $this->icon; ?>';
-    }
-    </style>
-  <?php }
+	/**
+	 * Prettify Words
+	 *
+	 * @param  {string} $words
+	 * @return {string}
+	 *
+	 * Creates a pretty version of a string, like a pug version of a dog.
+	 */
+	public function prettify_words($words)
+	{
+		return ucwords(str_replace('_', ' ', $words));
+	}
 
 
 
-  /**
-   * Get Font Awesome
-   * http://fortawesome.github.io/Font-Awesome/
-   *
-   * @param  {null}
-   * @return {output} html
-   */
-  static function get_font_awesome()
-  {
-    add_action('admin_head', 'font_awesome_icons');
+	/**
+	 * Uglify Words
+	 *
+	 * @param  {string} $words
+	 * @return {string}
+	 *
+	 * Creates a url firendly version of the given string.
+	 */
+	public function uglify_words($words)
+	{
+		return strToLower(str_replace(' ', '_', $words));
+	}
 
-    function font_awesome_icons()
-    {
-      echo '<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">';
-    }
-  }
+
+
+	/**
+	 * Plurify Words
+	 *
+	 * @param  {string} $words
+	 * @return {string}
+	 *
+	 * Plurifies most common words. Not currently working proper nouns,
+	 * or more complex words, for example knife => knives, leaf => leaves.
+	 */
+	public function plurify_words($words)
+	{
+		if (strToLower(substr($words, -1)) == 'y')
+		{
+			return substr_replace($words, 'ies', -1);
+		}
+
+		if (strToLower(substr($words, -1)) == 's')
+		{
+			return $words . 'es';
+		}
+
+		return $words . 's';
+	}
+
+
+
+	/**
+	 * Icon Style
+	 *
+	 * @param  {null}
+	 * @return {output} html
+	 */
+	public function icon_style()
+	{ ?>
+		<style rel="stylesheet" media="screen">
+			#adminmenu .menu-icon-<?php echo $this->name; ?> div.wp-menu-image:before {
+				font-family: 'FontAwesome' !important;
+				content: '\<?php echo $this->icon; ?>';
+			}
+		</style>
+	<?php }
+
+
+
+	/**
+	 * Get Font Awesome
+	 * http://fortawesome.github.io/Font-Awesome/
+	 *
+	 * @param  {null}
+	 * @return {output} html
+	 */
+	static function get_font_awesome()
+	{
+		add_action('admin_head', 'font_awesome_icons');
+
+		function font_awesome_icons()
+		{
+			echo '<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">';
+		}
+	}
 
 }

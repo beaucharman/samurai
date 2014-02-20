@@ -10,39 +10,39 @@
 
 <?php if (!defined('ABSPATH')) exit;
 
-if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
-die ('Please do not load this page directly. Thanks!');
+	if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
+		die ('Please do not load this page directly. Thanks!');
 
-if (post_password_required())
-{
-echo _e('This post is password protected. Enter the password to view comments.');
-return;
-}
+	if (post_password_required())
+	{
+		echo _e('This post is password protected. Enter the password to view comments.');
+		return;
+	}
 
-if (have_comments()) : ?>
+	if (have_comments()) : ?>
 
-<h3 class="comments-title"><?php comments_number('No Responses', 'One Response', '% Responses');?></h3>
+		<h3 class="comments-title"><?php comments_number('No Responses', 'One Response', '% Responses');?></h3>
 
-<ol class="commentlist">
-<?php wp_list_comments('type=comment&callback=Samurai_Snippet::advanced_comment'); ?>
-</ol>
+		<ol class="commentlist">
+			<?php wp_list_comments('type=comment&callback=Samurai_Snippet::advanced_comment'); ?>
+		</ol>
 
-<div class="comments-navigation">
-<div class="comments-navigation--next-posts"><?php previous_comments_link() ?></div>
-<div class="comments-navigation--prev-posts"><?php next_comments_link() ?></div>
-</div>
+		<div class="comments-navigation">
+			<div class="comments-navigation--next-posts"><?php previous_comments_link() ?></div>
+			<div class="comments-navigation--prev-posts"><?php next_comments_link() ?></div>
+		</div>
 
-<?php else : /* this is displayed if there are no comments so far  */?>
+	<?php else : /* this is displayed if there are no comments so far  */?>
 
-<?php if (comments_open()) : ?>
+		<?php if (comments_open()) : ?>
 
-<?php else : /* comments are closed  */?>
-<p class="comments-closed-message">
-<?php echo _e('Comments are closed.'); ?>
-</p>
-<?php endif; ?>
+		<?php else : /* comments are closed  */?>
+			<p class="comments-closed-message">
+			<?php echo _e('Comments are closed.'); ?>
+			</p>
+		<?php endif; ?>
 
-<?php endif; ?>
+	<?php endif; ?>
 
 <?php if (comments_open()) : ?>
 
