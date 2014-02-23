@@ -8,10 +8,7 @@
  *               samurai/library/extensions/custom-taxonomy.php,
  *               samurai/library/extensions/menu.php
  *
- * Data structures, taxonomies and custom post types
- *
- * To declare a custom post type, simply create a new instance of the
- * Bamboo_Custom_Taxonomy class.
+ * Data structures, menus, taxonomies and custom post types
  *
  * Configuration guide:
  * https://github.com/beaucharman/wordpress-custom-post-types
@@ -61,15 +58,15 @@ class Samurai_Model
 	{
 
 
-		// Example - Movie
-
-		// global $Movie;
-		//
-		// $Movie = new Katana_Custom_Post_Type(
-		// 	array(
-		// 		'name' => 'movie'
-		// 	)
-		// );
+		/**
+		 * Example - Movie
+		global $Movie;
+		$Movie = new Katana_Custom_Post_Type(
+		 	array(
+		 		'name' => 'movie'
+		 	)
+		);
+		 */
 
 	}
 
@@ -84,16 +81,16 @@ class Samurai_Model
 	{
 
 
-		// Example - Genre
-
-		// global $Genre;
-
-		// $Genre = new Katana_Custom_Taxonomy(
-		// 	array(
-		// 		'name'      => 'genre',
-		// 		'post_type' => 'movie'
-		// 	)
-		// );
+		/**
+		 * Example - Genre
+		global $Genre;
+		$Genre = new Katana_Custom_Taxonomy(
+		 	array(
+				'name'      => 'genre',
+				'post_type' => 'movie'
+			)
+		);
+		*/
 
 	}
 
@@ -108,10 +105,9 @@ class Samurai_Model
 	{
 
 		/**
-		* Main Navigation Menu
-		*/
+		 * Main Navigation Menu
+		 */
 		global $Main_Navigation_Menu;
-
 		$Main_Navigation_Menu = new Samurai_Menu(
 			array(
 				'name' => 'Main Navigation Menu'
