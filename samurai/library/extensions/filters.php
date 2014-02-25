@@ -26,6 +26,7 @@ class Samurai_Filter
 		add_action('init', array(&$this, 'remove_head_links'));
 
 		remove_filter('get_the_excerpt', array(&$this, 'wp_trim_excerpt'));
+
 		add_filter('get_the_excerpt', array(&$this, 'trim_excerpt'));
 
 		add_filter('body_class', array(&$this, 'browser_body_class'));
@@ -47,14 +48,6 @@ class Samurai_Filter
 			add_filter('excerpt_more', array(&$this, 'search_excerpt_more'));
 
 			add_filter('post_class', array(&$this, 'add_to_body_class'));
-
-			add_filter('body_class', array(&$this, 'add_to_body_class'));
-
-			add_filter('request', array(&$this, 'search_form_request_filter'));
-
-			add_filter('get_search_form', array(&$this, 'html5_search_form'));
-
-			add_filter('excerpt_more', array(&$this, 'search_excerpt_more'));
 
 			remove_filter('get_the_excerpt', array(&$this, 'wp_trim_excerpt'));
 
