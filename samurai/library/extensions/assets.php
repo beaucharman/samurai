@@ -87,8 +87,10 @@ class Samurai_Asset
 				wp_enqueue_script('comment-reply');
 			}
 
-			/* Modernizr */
-			wp_enqueue_script('samurai_modernizr');
+			/**
+			 * Modernizr
+			 */
+			// wp_enqueue_script('samurai_modernizr');
 
 			/**
 			 * Load in separate scripts for development, change this to a concatenated
@@ -96,12 +98,16 @@ class Samurai_Asset
 			 */
 			if (SAMURAI_DEVELOPMENT_MODE)
 			{
-				/* jQuery */
+				/**
+				 * jQuery
+				 */
 				// wp_enqueue_script('samurai_jquery'); // theme version
 				// wp_enqueue_script('jquery'); // wp-includes version
 				// wp_enqueue_script('google_jquery'); // Google hosted version
 
-				/* Plugins */
+				/**
+				 * Plugins
+				 */
 				wp_enqueue_script('samurai_plugins');
 
 				/**
@@ -144,7 +150,9 @@ class Samurai_Asset
 			 *
 			 */
 
-			/* Main stylesheet */
+			/**
+			 * Main stylesheet
+			 */
 			wp_enqueue_style('samurai_main_stylesheet');
 
 			/**

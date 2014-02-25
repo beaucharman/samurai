@@ -25,19 +25,19 @@ define('SAMURAI_FULL_LIBRARY_PATH', SAMURAI_PATH . '/library');
 
 define('SAMURAI_FULL_EXTENSIONS_PATH', SAMURAI_PATH . '/library/extensions');
 
-define('SAMURAI_SCRIPTS_PATH', 'library/javascripts');
+define('SAMURAI_VIEWS_PATH', 'library/views');
+
+define('SAMURAI_SCRIPTS_PATH', 'assets/javascripts');
 
 define('SAMURAI_FULL_SCRIPTS_PATH', SAMURAI_URI . '/' . SAMURAI_SCRIPTS_PATH);
 
-define('SAMURAI_STYLES_PATH', 'library/stylesheets');
+define('SAMURAI_STYLES_PATH', 'assets/stylesheets');
 
 define('SAMURAI_FULL_STYLES_PATH', SAMURAI_URI . '/' . SAMURAI_STYLES_PATH);
 
-define('SAMURAI_IMAGES_PATH', 'library/images');
+define('SAMURAI_IMAGES_PATH', 'assets/images');
 
 define('SAMURAI_FULL_IMAGES_PATH', SAMURAI_URI . '/' . SAMURAI_IMAGES_PATH);
-
-define('SAMURAI_VIEWS_PATH', 'library/views');
 
 
 
