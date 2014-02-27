@@ -24,10 +24,18 @@ class Samurai_Admin
 	{
 
 		/**
+		 * Hide the default, built in Posts post type
+		 */
+		if (SAMURAI_HIDE_BUILT_IN_POSTS)
+		{
+			add_action('admin_menu', array(&$this, 'remove_posts_from_menu'));
+
+			add_action('wp_before_admin_bar_render', array(&$this, 'remove_posts_from_toolbar'));
+		}
+
+		/**
 		 * Dashboard and login functions
 		 */
-		// add_action('admin_menu', array(&$this, 'remove_posts_from_menu'));
-
 		add_filter('admin_footer_text', array(&$this, 'replace_admin_footer'));
 
 		if (! SAMURAI_ENABLE_COMMENTS)
@@ -43,6 +51,8 @@ class Samurai_Admin
 		}
 
 		add_action('wp_dashboard_setup', array(&$this, 'remove_dashboard_widgets'));
+
+		add_action('wp_before_admin_bar_render', array(&$this, 'remove_toolbar_nodes'));
 
 		add_action('dashboard_glance_items', array(&$this, 'add_cpt_to_dashboard'));
 
@@ -73,13 +83,21 @@ class Samurai_Admin
 
 	/**
 	 *
-	 * Remove posts from menu
+	 * Remove posts from menu and admin toolbar
 	 *
 	 */
 	function remove_posts_from_menu()
 	{
 		remove_menu_page('edit.php');
 	}
+
+	function remove_posts_from_toolbar()
+	{
+		global $wp_admin_bar;
+
+		$wp_admin_bar->remove_node('new-post');
+	}
+
 
 
 	/**
@@ -156,6 +174,20 @@ class Samurai_Admin
 		 * Add more Dashboard Widget handles here to remove.
 		 */
 	}
+
+
+
+	/**
+	 * Remove Toolbar Nodes Widgets
+	 */
+	function remove_toolbar_nodes()
+	{
+		global $wp_admin_bar;
+
+		$wp_admin_bar->remove_menu('customize');
+		$wp_admin_bar->remove_menu('themes');
+	}
+
 
 
 

@@ -11,7 +11,7 @@
 
 
 /**
- * Sample Get - wp_query conditions (a single movie type)
+ * Sample Get
 Samurai_Route::get(array('post_type' => 'page'), function ()
 {
 	Samurai_View::make('message-no-results');
