@@ -26,7 +26,15 @@ class Samurai_Pagination
 	{
 		global $wp_query;
 
-		if ($wp_query->max_num_pages > 1) return true;
+		if (! $custom_query)
+		{
+			$custom_query = $wp_query;
+		}
+
+		if ($custom_query->max_num_pages > 1)
+		{
+			return true;
+		}
 
 		return false;
 	}
@@ -79,12 +87,16 @@ class Samurai_Pagination
 	 */
 	static function include_page_pagination()
 	{
-		if (self::has_page_pagination())
+		global $wp_query;
+
+		if (! $custom_query) $custom_query = $wp_query;
+
+		if (self::has_page_pagination($custom_query))
 		{
-			if (function_exists('wp_pagenavi') && self::has_page_pagination())
+			if (function_exists('wp_pagenavi'))
 			{
 				echo '<nav class="page-pagination">';
-				wp_pagenavi(array('type' => 'multipart'));
+				wp_pagenavi(array('type' => 'multipart', 'query' => $custom_query));
 				echo '</nav>';
 			}
 			else
@@ -120,15 +132,23 @@ class Samurai_Pagination
 	 */
 	static function include_archive_pagination()
 	{
-		if (function_exists('wp_pagenavi') && self::has_page_pagination())
+		global $wp_query;
+
+		if (! $custom_query) $custom_query = $wp_query;
+
+		if (self::has_page_pagination($custom_query))
 		{
-			echo '<nav class="archive-pagination">';
-			wp_pagenavi();
-			echo '</nav>';
-		}
-		else
-		{
-			self::include_archive_navigation();
+
+			if (function_exists('wp_pagenavi'))
+			{
+				echo '<nav class="pagination pagination__archive">';
+				wp_pagenavi(array('query' => $custom_query));
+				echo '</nav>';
+			}
+			else
+			{
+				self::include_archive_navigation();
+			}
 		}
 	}
 
@@ -141,7 +161,7 @@ class Samurai_Pagination
 	{
 		if (self::has_page_pagination())
 		{
-			echo '<nav class="archive-navigation">';
+			echo '<nav class="navigation navigation__archive">';
 			self::get_archive_nav_links();
 			echo '</nav>';
 		}
