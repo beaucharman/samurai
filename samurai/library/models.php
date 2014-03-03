@@ -60,14 +60,14 @@ class Samurai_Model
 
 		/**
 		 * Example - Movie
-		 */
+		 *
 		global $Movie;
 		$Movie = new Katana_Custom_Post_Type(
 		 	array(
 		 		'name' => 'movie'
 		 	)
 		);
-
+		 */
 
 	}
 
@@ -91,7 +91,7 @@ class Samurai_Model
 				'post_type' => 'movie'
 			)
 		);
-		*/
+		 */
 
 	}
 
