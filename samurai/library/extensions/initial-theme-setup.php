@@ -52,24 +52,25 @@ class Samurai_Setup
 			 * natively on retina.
 			 */
 			$core_settings = array(
-				'avatar_default'    => 'mystery',
-				'avatar_rating'     => 'G',
-				'blog_public'       => '0',
-				'blogdescription'   => '',
-				'comments_per_page' => '20',
-				'date_format'       => 'd/m/Y',
-				'default_role'      => 'author',
-				'large_size_h'      => (SAMURAI_PAGE_CONTENT_WIDTH / 2) * 1.25,
-				'large_size_w'      => SAMURAI_PAGE_CONTENT_WIDTH * 1.25,
-				'medium_size_h'     => (SAMURAI_PAGE_CONTENT_WIDTH / 3) * 1.25,
-				'medium_size_w'     => (SAMURAI_PAGE_CONTENT_WIDTH / 2) * 1.25,
-				'posts_per_page'    => '20',
-				'thumbnail_crop'    => '1',
-				'thumbnail_size_h'  => (SAMURAI_PAGE_CONTENT_WIDTH / 4) * 1.25,
-				'thumbnail_size_w'  => (SAMURAI_PAGE_CONTENT_WIDTH / 4) * 1.25,
-				'time_format'       => 'g:i a',
-				'timezone_string'   => 'Australia/Sydney',
-				'use_smilies'       => '0'
+				'avatar_default'          => 'mystery',
+				'avatar_rating'           => 'G',
+				'blog_public'             => '0',
+				'blogdescription'         => '',
+				'comments_per_page'       => '20',
+				'date_format'             => 'd/m/Y',
+				'default_role'            => 'author',
+				'image_default_link_type' => 'none',
+				'large_size_h'            => (SAMURAI_PAGE_CONTENT_WIDTH / 2) * 1.25,
+				'large_size_w'            => SAMURAI_PAGE_CONTENT_WIDTH * 1.25,
+				'medium_size_h'           => (SAMURAI_PAGE_CONTENT_WIDTH / 3) * 1.25,
+				'medium_size_w'           => (SAMURAI_PAGE_CONTENT_WIDTH / 2) * 1.25,
+				'posts_per_page'          => '20',
+				'thumbnail_crop'          => '1',
+				'thumbnail_size_h'        => (SAMURAI_PAGE_CONTENT_WIDTH / 4) * 1.25,
+				'thumbnail_size_w'        => (SAMURAI_PAGE_CONTENT_WIDTH / 4) * 1.25,
+				'time_format'             => 'g:i a',
+				'timezone_string'         => 'Australia/Sydney',
+				'use_smilies'             => '0'
 			);
 
 			foreach ($core_settings as $key => $value)
