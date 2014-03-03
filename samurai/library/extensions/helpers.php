@@ -179,13 +179,13 @@ class Samurai_Helper
 
 
 	/**
-	* Is Post Type
-	*
-	* @param {mixed array||string} $type
-	* @return {boolean}
-	*
-	* Function to check if Custom Post Type.
-	*/
+	 * Is Post Type
+	 *
+	 * @param {mixed array||string} $type
+	 * @return {boolean}
+	 *
+	 * Function to check if Custom Post Type.
+	 */
 	public static function is_post_type($type = null)
 	{
 		global $post, $wp_query;
