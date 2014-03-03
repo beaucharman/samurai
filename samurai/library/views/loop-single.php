@@ -35,7 +35,7 @@
 
 </article>
 
-<?php Samurai_Pagination::include_archive_pagination(); ?>
+<?php Samurai_Pagination::include_single_navigation(); ?>
 
 <?php Samurai_Snippet::get_comments_template(); ?>
 

@@ -82,7 +82,7 @@ class Samurai_Config {
         /**
          * Enable comments
          */
-        define('SAMURAI_ENABLE_COMMENTS', false);
+        define('SAMURAI_ENABLE_COMMENTS', true);
 
         /**
          * Enable site search
@@ -92,7 +92,7 @@ class Samurai_Config {
         /**
          * Show post meta data on pages
          */
-        define('SAMURAI_ENABLE_META_DATA', false);
+        define('SAMURAI_ENABLE_META_DATA', true);
 
 
 

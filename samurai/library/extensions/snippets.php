@@ -294,10 +294,10 @@ class Samurai_Snippet
 			$url = get_permalink($post_parent->ID);
 			$name = get_the_title($post_parent->ID);
 		}
-		elseif (fcac_Helper::is_post_type())
+		elseif (Samurai_Helper::is_post_type())
 		{
 			$url = get_post_type_archive_link(get_post_type($post->ID));
-			$name = fcac_Helper::prettify_words(fcac_Helper::plurify_words(get_post_type(get_the_ID())));
+			$name = Samurai_Helper::prettify_words(Samurai_Helper::plurify_words(get_post_type(get_the_ID())));
 		}
 		else
 		{
@@ -326,7 +326,7 @@ class Samurai_Snippet
 	public static function get_taxonomies_terms_links()
 	{
 		global $post, $post_id;
-		$post = &get_post($post->ID); // get post by post id
+		$post = get_post($post->ID); // get post by post id
 		$post_type = $post->post_type; // get post type by post
 		$taxonomies = get_object_taxonomies($post_type); // get post type taxonomies
 
@@ -358,30 +358,32 @@ class Samurai_Snippet
 	{
 		if (SAMURAI_ENABLE_META_DATA)
 		{
-			echo '<p class="postmetadata">'
-				. '<span class="post-categories-time">'
-				. _e('Posted ');
+			echo '<aside class="postmetadata">'
+				. '<div class="post-categories-time">';
 
+			/* Taxonomies */
 			if (self::get_taxonomies_terms_links())
 			{
-				echo _e(' in ');
 				echo self::get_taxonomies_terms_links();
 				echo ', ';
 			}
 
+			/* Time */
 			echo 'on the ';
 			the_time('jS \o\f F, Y');
 			echo '.';
 
+			/* Comments */
 			if (SAMURAI_ENABLE_COMMENTS)
 			{
 				echo ' ';
 				comments_popup_link('No Comments', '1 Comment &rarr;', '% Comments &rarr;', 'comments-link', '');
 			}
 
-			echo '</span><br>';
+			/* Tags */
+			echo '</div><br>';
 			the_tags('<span class="post-tags">Tags: ', ', ', '</span>');
-			echo '</p>';
+			echo '</aside>';
 		}
 	}
 
@@ -417,33 +419,29 @@ class Samurai_Snippet
 	{
 		$GLOBALS['comment'] = $comment; ?>
 		<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-		<div class="comment-vcard">
-			<?php echo get_avatar($comment, '56'); ?>
-		</div>
-		<div class="comment-body">
-			<div class="comment-author"><a href="<?php the_author_meta('user_url'); ?>"><?php printf(__('%s'), get_comment_author_link()); ?></a>said:</div>
-			<?php if ($comment->comment_approved == '0') : ?>
-			<div>
-				<em><?php _e('Your comment is awaiting moderation.'); ?></em>
-				<br>
+			<div class="comment__vcard">
+				<?php echo get_avatar($comment, '56'); ?>
 			</div>
-			<?php endif; ?>
-			<div class="comment-text"><?php comment_text() ?></div>
-			<div class="comment-meta">
-				<small>on the <?php printf(__('%1$s'), get_comment_date('l, F j, Y')); ?>
-				<?php if (current_user_can('edit_post')) : ?>
-				(<?php edit_comment_link(__('Edit'), '', '') ?><?php self::delete_comment_link(get_comment_ID()); ?>)
+			<div class="comment__body">
+				<div class="comment__author"><a href="<?php the_author_meta('user_url'); ?>"><?php printf(__('%s'), get_comment_author_link()); ?></a> said:</div>
+				<?php if ($comment->comment_approved == '0') : ?>
+				<div>
+					<em><?php _e('Your comment is awaiting moderation.'); ?></em>
+					<br>
+				</div>
 				<?php endif; ?>
-				</small>
+				<div class="comment__text"><?php comment_text() ?></div>
+				<div class="comment__meta">
+					<small>on <?php printf(__('%1$s'), get_comment_date('l, F j, Y')); ?>
+					<?php if (current_user_can('edit_post')) : ?>
+					(<?php edit_comment_link(__('Edit'), '', '') ?><?php self::delete_comment_link(get_comment_ID()); ?>)
+					<?php endif; ?>
+					</small>
+				</div>
+				<div class="comment__reply">
+					<?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
+				</div>
 			</div>
-			<div class="reply">
-				<?php comment_reply_link(
-					array_merge($args,
-						array('depth' => $depth, 'max_depth' => $args['max_depth'])
-					)
-				); ?>
-			</div>
-		</div>
 	<?php }
 
 }

@@ -22,7 +22,7 @@ class Samurai_Pagination
 	 *
 	 * Return true if has pagination.
 	 */
-	static function has_page_pagination()
+	static function has_page_pagination($custom_query = null)
 	{
 		global $wp_query;
 
@@ -46,13 +46,13 @@ class Samurai_Pagination
 	 */
 	static function get_single_nav_links()
 	{
-		echo '<div class="next-single">';
+		echo '<span class="navigation__single--next">';
 		next_post_link('%link', 'Next Article &rarr;', true);
-		echo '</div>';
+		echo '</span>';
 
-		echo '<div class="previous-single">';
+		echo '<span class="navigation__single--previous">';
 		previous_post_link('%link', '&larr; Previous Article', true);
-		echo '</div>';
+		echo '</span>';
 	}
 
 
@@ -62,7 +62,7 @@ class Samurai_Pagination
 	 */
 	static function get_archive_nav_links()
 	{
-		posts_nav_link(' &mdash; ', '&larr; Previous Page', 'Next Page &rarr;');
+		posts_nav_link(' &mdash; ', '&larr; Previous', 'Next &rarr;');
 	}
 
 
@@ -75,7 +75,7 @@ class Samurai_Pagination
 	 */
 	static function include_single_navigation()
 	{
-		echo '<nav class="single-navigation clear-fix">';
+		echo '<nav class="navigation navigation__single">';
 		self::get_single_nav_links();
 		echo '</nav>';
 	}
@@ -85,24 +85,21 @@ class Samurai_Pagination
 	/**
 	 * Include page pagination (using wp_pagenavi)
 	 */
-	static function include_page_pagination()
+	static function include_page_pagination($custom_query = null)
 	{
 		global $wp_query;
 
 		if (! $custom_query) $custom_query = $wp_query;
 
-		if (self::has_page_pagination($custom_query))
+		if (function_exists('wp_pagenavi') && self::has_page_pagination($custom_query))
 		{
-			if (function_exists('wp_pagenavi'))
-			{
-				echo '<nav class="page-pagination">';
-				wp_pagenavi(array('type' => 'multipart', 'query' => $custom_query));
-				echo '</nav>';
-			}
-			else
-			{
-				self::include_page_navigation();
-			}
+			echo '<nav class="pagination pagination__page">';
+			wp_pagenavi(array('type' => 'multipart', 'query' => $custom_query));
+			echo '</nav>';
+		}
+		else
+		{
+			self::include_page_navigation();
 		}
 	}
 
@@ -113,16 +110,13 @@ class Samurai_Pagination
 	 */
 	static function include_page_navigation()
 	{
-		if (self::has_page_pagination())
-		{
-			wp_link_pages(array(
-				'before'           => '<nav class="page-navigation">' . __('Pages:'),
-				'after'            => '</nav>',
-				'nextpagelink'     => __('Next page &rarr;'),
-				'previouspagelink' => __('Previous &larr;'),
-				'pagelink'         => '%')
-			);
-		}
+		wp_link_pages(array(
+			'before'           => '<nav class="navigation navigation__page">' . __('Pages:'),
+			'after'            => '</nav>',
+			'nextpagelink'     => __('Next Page &rarr;'),
+			'previouspagelink' => __('Previous Page &larr;'),
+			'pagelink'         => '%')
+		);
 	}
 
 
@@ -130,7 +124,7 @@ class Samurai_Pagination
 	/**
 	 * Include archive pagination (using wp_pagenavi)
 	 */
-	static function include_archive_pagination()
+	static function include_archive_pagination($custom_query = null)
 	{
 		global $wp_query;
 
