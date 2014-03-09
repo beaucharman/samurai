@@ -105,6 +105,7 @@ class Samurai_Route
 	 */
 	private static function search($array, $key, $value, &$results)
 	{
+		/* We only want arrays */
 		if (! is_array($array))
 		{
 			return;

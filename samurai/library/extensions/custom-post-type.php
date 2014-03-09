@@ -181,7 +181,7 @@ class Katana_Custom_Post_Type
 	{
 		foreach ($this->help as $help)
 		{
-			if (! $help['context'])
+			if (! isset($help['context']))
 			{
 				$context = $this->name;
 			}
@@ -315,8 +315,7 @@ class Katana_Custom_Post_Type
 	 * @param  {null}
 	 * @return {output} html
 	 */
-	public function icon_style()
-	{ ?>
+	public function icon_style() { ?>
 		<style rel="stylesheet" media="screen">
 			#adminmenu .menu-icon-<?php echo $this->name; ?> div.wp-menu-image:before {
 				font-family: 'FontAwesome' !important;
@@ -336,12 +335,10 @@ class Katana_Custom_Post_Type
 	 */
 	static function get_font_awesome()
 	{
-		add_action('admin_head', 'font_awesome_icons');
-
-		function font_awesome_icons()
+		add_action('admin_head', function ()
 		{
 			echo '<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">';
-		}
+		});
 	}
 
 }
