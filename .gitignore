@@ -2,6 +2,7 @@
 .DS_Store
 .sass-cache
 .rev
+.revision
 debug.log
 license.txt
 node_modules
