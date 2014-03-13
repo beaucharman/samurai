@@ -1,16 +1,18 @@
 # Files
 .DS_Store
-.sass-cache
 .rev
 .revision
+config.codekit
 debug.log
 license.txt
-node_modules
 npm-debug.log
 package.json
 readme.html
 
 # Directories
+.codekit-cache
+.sass-cache
+node_modules
 wp-content/debug.log
 wp-content/uploads
 

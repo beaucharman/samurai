@@ -7,9 +7,7 @@
  * @subpackage   samurai
  */
 ?><!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 oldie"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 oldie"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9 oldie"> <![endif]-->
+<!--[if lt IE 9]><html class="no-js oldie"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 
@@ -44,9 +42,9 @@
 
 			<header class="page-header" role="banner">
 
-				<?php if (is_home() || is_front_page()) : ?><h1 class="site-heading"><?php endif; ?>
-				<a class="header__title site-title" href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?> home page link"><?php bloginfo('name'); ?></a>
-				<?php if (is_home() || is_front_page()) : ?></h1><?php endif; ?>
+				<h1 class="site-heading">
+					<a class="header__title site-title" href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?> home page link"><?php bloginfo('name'); ?></a>
+				</h1>
 
 				<?php if (get_bloginfo('description')) : ?>
 				<div class="header__description site-description"><?php bloginfo('description'); ?></div>
