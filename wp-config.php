@@ -162,6 +162,11 @@ define('DB_COLLATE', '');
 // define('WP_MEMORY_LIMIT', '64M');
 
 /**
+ * Increase the WP Memory Limit for the administration area
+ */
+// define('WP_MAX_MEMORY_LIMIT', '96M');
+
+/**
  * Enabled WordPress object caching. requres an advanced-cache.php file
  */
 // define('WP_CACHE', true);
