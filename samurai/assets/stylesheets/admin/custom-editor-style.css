@@ -30,7 +30,8 @@ body {
 html .mceContentBody {
 	max-width: 960px; /* set this the same as the general copy width */
 	border-right: 1px solid #ccc;
-	padding: 20px;
+	padding: 1.5em;
+	height: auto;
 }
 
 /**
