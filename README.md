@@ -78,25 +78,31 @@ Some nice deployment configurations, house cleaning and security stuff in there.
 Which should contain:
 
 ```
-# Prevent directory browsing
+# ------------------------------------------------------------------------------
+# | Prevent directory browsing                                                 |
+# ------------------------------------------------------------------------------
 Options All -Indexes
 
-# Protect all sever side files
-Order deny,allow
-Deny from all
-<Files ~ “.(css|js|pdf|doc|xml|jpe?g|png|gif|svg|ttf|woff|eot|mp3?mp4?flv)$”>
-Allow from all
-</Files>
-```
 
-or 
+# ------------------------------------------------------------------------------
+# | Protect all sever side files                                               |
+# ------------------------------------------------------------------------------
 
-```
-Order deny,allow
-Allow from all
-<Files ~ “.(php)$”>
-Deny from all
-</Files>
+# Option 1
+
+#Order deny,allow
+#Deny from all
+#<Files ~ “.(css|js|pdf|doc|xml|jpe?g|png|gif|svg|ttf|woff|eot|mp3?mp4?flv)$”>
+#Allow from all
+#</Files>
+
+# Option 2
+
+#Order deny,allow
+#Allow from all
+#<Files ~ “.(php)$”>
+#Deny from all
+#</Files>
 ```
 
 **Enforce SSL Usage**
