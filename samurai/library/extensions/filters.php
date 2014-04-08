@@ -49,6 +49,8 @@ class Samurai_Filter
 
 			add_filter('post_class', array(&$this, 'add_to_body_class'));
 
+			add_filter('body_class', array(&$this, 'add_to_body_class'));
+
 			remove_filter('get_the_excerpt', array(&$this, 'wp_trim_excerpt'));
 
 			add_filter('get_the_excerpt', array(&$this, 'trim_excerpt'));
