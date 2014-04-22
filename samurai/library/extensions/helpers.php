@@ -383,7 +383,7 @@ class Samurai_Helper
 	 */
 	public static function urify_words($words)
 	{
-		return strToLower(str_replace(' ', '-', $words));
+		return urlencode(strToLower(str_replace('--', '-', str_replace(' ', '-', $words))));
 	}
 
 
