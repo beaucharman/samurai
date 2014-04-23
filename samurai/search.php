@@ -17,7 +17,7 @@ get_header(); ?>
 
 		<h1 class="search__heading content-title">Search Results</h1>
 
-		<p class="search__query"><?php echo $total_results ?> result<?php if ($total_results != 1) echo 's'; ?>found for the search term: <span><?php echo esc_html($s, 1); ?></span></p>
+		<p class="search__query"><?php echo $total_results ?> result<?php if ($total_results != 1) echo 's'; ?> found for the search term: <span><?php echo esc_html($s, 1); ?></span></p>
 
 		<?php if (have_posts()) : ?>
 
