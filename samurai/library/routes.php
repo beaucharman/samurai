@@ -6,6 +6,11 @@
  * @version      1 | February 9th 2013
  * @package      WordPress
  * @subpackage   samurai/library/extensions/router.php
+ * 
+ * Use the following snippet to find out what vars are usable from the wp_query object
+ *
+ add_action('pre_get_posts', function() { global $wp_query; echo '<pre>'; print_r($wp_query); echo '</pre>'; });
+ * 
  */
 
 
