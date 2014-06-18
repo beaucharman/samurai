@@ -49,6 +49,16 @@ class Samurai_Config {
         define('SAMURAI_THEME_DIRECTORY_URI', get_stylesheet_directory_uri());
 
         /**
+         * Set site name
+         */
+        define('SAMURAI_SITE_NAME', get_bloginfo('name'));
+        
+        /**
+         * Set home URL
+         */
+        define('SAMURAI_HOME_URL', home_url());
+
+        /**
          * Set full page content width
          */
         define('SAMURAI_PAGE_CONTENT_WIDTH', 960);
