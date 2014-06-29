@@ -13,9 +13,9 @@ get_header(); ?>
 
 	<?php global $post, $wp_query; $post = $posts[0]; ?>
 
-	<h1 class="archive__heading content-heading"><?php echo Samurai_Snippet::get_archive_title(); ?></h1>
-
 	<?php if (have_posts()) : ?>
+
+		<h1 class="archive__heading content-heading"><?php echo Samurai_Snippet::get_archive_title(); ?></h1>
 
 		<?php Samurai_View::make('loop-archive', get_post_type($post->ID)); ?>
 
