@@ -17,7 +17,7 @@
 
 ### Installation
 1. Add the `samurai` folder to your theme's directory.
-2. add the `.htaccess` and `.gitignore` files to your WordPress root.
+2. add the `.htaccess` and `.gitignore` (make sure you update paths!) files to your WordPress root.
 3. With the `wp-config-sample.php` file:
   1. Rename to `wp-config.php` and add it to your WordPress root.
   2. Go to https://api.wordpress.org/secret-key/1.1/salt/ and copy the unique, newly generated salts and replace the place holder salts.
