@@ -10,12 +10,95 @@
  * @license      MIT license
  */
 
-// jQuery No Conflict. To prevent third party plugins from conflicting with
-// your jQuery, simply use the following anonymous function:
-/*
+
 ;(function ($) {
 
-	// contain code in here...
+
+
+	_samurai = {
+
+
+
+		/**
+		 * vars
+		 * @type {Object}
+		 */
+		vars : {
+
+			resizeTimer: null,
+			resizeTimerCount: 200,
+			$body: $('body')
+		},
+
+
+
+		/**
+		 * init
+		 * @return
+		 */
+		init: function () {
+
+			var _this = this;
+
+		},
+
+
+
+		/**
+		 * resize
+		 * @return
+		 */
+		resize: function () { },
+
+
+
+		/**
+		 *
+		 * Project Functions
+		 *
+		 */
+
+
+
+	}; // end _samurai
+
+
+
+	/**
+	 * Document ready functions
+	 */
+
+	$(document).ready(function () {
+
+		var _samurai = window._samurai;
+
+		_samurai.init();
+
+		$(window).trigger('resize');
+
+	});
+
+
+
+	/**
+	 * Window load functions
+	 */
+	$(window).load(function () {
+
+		$(window).trigger('resize');
+
+	});
+
+
+
+	/**
+	 * Window resize functions
+	 */
+	$(window).resize(function () {
+
+		clearTimeout(_samurai.vars.resizeTimer);
+		_samurai.vars.resizeTimer = setTimeout(_samurai.resize, _samurai.vars.resizeTimerCount);
+	});
 
 })(jQuery);
-*/
+

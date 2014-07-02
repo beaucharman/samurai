@@ -124,9 +124,9 @@ class Samurai_Filter
 	public static function html5_search_form($form)
 	{
 	return ''
-		. '<form class="search-form" role="search" method="get" action="' . home_url('/') . '">'
-		. '<input type="text" placeholder="' . __("Search&hellip;") . '" value="" name="s" id="s">'
-		. '<input type="submit" id="searchsubmit" value="Go">'
+		. '<form class="search-form" role="search" method="get" action="' . home_url('/') . '" id="site-search-form">'
+		. '	  <input type="text" placeholder="' . __("Search&hellip;") . '" value="" name="s" id="s">'
+		. '	  <button type="submit" form="site-search-form" title="Submit search criteria" id="searchsubmit">Go</button>'
 		. '</form>';
 	}
 

@@ -41,7 +41,15 @@ class Samurai_Helper
 				return $image_src[0];
 			}
 
-			return $image_src;
+			$nice_image_src = array(
+				'src' => $image_src[0],
+				'width' => $image_src[1],
+				'height' => $image_src[2],
+				'alt' => $image_src[3],
+			);
+
+			return $nice_image_src;
+
 		}
 
 		return false;
