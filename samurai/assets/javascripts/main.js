@@ -1,6 +1,6 @@
 /**
  * Main
- * ======================================================
+ *
  * main.js
  * @version      2.1 | June 6th 2013
  * @package      WordPress
@@ -27,7 +27,7 @@
 
 			resizeTimer: null,
 			resizeTimerCount: 200,
-			$body: $('body')
+			// $body: $('body')
 		},
 
 
@@ -68,37 +68,36 @@
 	 * Document ready functions
 	 */
 
-	$(document).ready(function () {
+	// $(document).ready(function () {
 
-		var _samurai = window._samurai;
+	// 	var _samurai = window._samurai;
 
-		_samurai.init();
+	// 	_samurai.init();
 
-		$(window).trigger('resize');
+	// 	$(window).trigger('resize');
 
-	});
+	// });
 
 
 
 	/**
 	 * Window load functions
 	 */
-	$(window).load(function () {
+	// $(window).load(function () {
 
-		$(window).trigger('resize');
+	// 	$(window).trigger('resize');
 
-	});
+	// });
 
 
 
 	/**
 	 * Window resize functions
 	 */
-	$(window).resize(function () {
+	// $(window).resize(function () {
 
-		clearTimeout(_samurai.vars.resizeTimer);
-		_samurai.vars.resizeTimer = setTimeout(_samurai.resize, _samurai.vars.resizeTimerCount);
-	});
+	// 	clearTimeout(_samurai.vars.resizeTimer);
+	// 	_samurai.vars.resizeTimer = setTimeout(_samurai.resize, _samurai.vars.resizeTimerCount);
+	// });
 
-})(jQuery);
-
+})(); // pass jQuery here

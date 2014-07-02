@@ -1,7 +1,7 @@
 <?php
 /**
- * Cahce
- * ======================================================
+ * Cache
+ *
  * cache.php
  * @version      14th | February 9th 2013
  * @package      WordPress

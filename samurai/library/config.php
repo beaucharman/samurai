@@ -1,7 +1,7 @@
 <?php
 /**
 * Config
-* ======================================================
+*
 * config.php
 * @version      2.1 | June 6th 2013
 * @package      WordPress
@@ -42,7 +42,7 @@ class Samurai_Config {
          *  Front end layout and design options
          *
          */
-         
+
         /**
          * Set theme directory uri
          */
@@ -52,7 +52,7 @@ class Samurai_Config {
          * Set site name
          */
         define('SAMURAI_SITE_NAME', get_bloginfo('name'));
-        
+
         /**
          * Set home URL
          */
