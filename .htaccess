@@ -1,4 +1,3 @@
-
 # BEGIN WordPress
 
 # END WordPress
@@ -13,6 +12,20 @@
 
 # php_value memory_limit 96M
 
+# ------------------------------------------------------------------------------
+# | Enable gzip                                                                |
+# ------------------------------------------------------------------------------
+
+<ifModule mod_gzip.c>
+	mod_gzip_on Yes
+	mod_gzip_dechunk Yes
+	mod_gzip_item_include file .(html?|txt|css|js|php|pl)$
+	mod_gzip_item_include handler ^cgi-script$
+	mod_gzip_item_include mime ^text/.*
+	mod_gzip_item_include mime ^application/x-javascript.*
+	mod_gzip_item_exclude mime ^image/.*
+	mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</ifModule>
 
 # ##############################################################################
 # Security                                                                     #
@@ -23,9 +36,9 @@
 # ------------------------------------------------------------------------------
 
 <Files ~ "^.*\.([Hh][Tt][Aa])">
-  Order Allow,Deny
-  Deny From All
-  Satisfy All
+	Order Allow,Deny
+	Deny From All
+	Satisfy All
 </Files>
 
 # ------------------------------------------------------------------------------
@@ -33,8 +46,8 @@
 # ------------------------------------------------------------------------------
 
 <Files wp-config.php>
-  Order Allow,Deny
-  Deny From All
+	Order Allow,Deny
+	Deny From All
 </Files>
 
 # ------------------------------------------------------------------------------
@@ -72,25 +85,25 @@ RewriteRule ^(.*)$ index.php [F,L]
 # | Protect files within wp-content (place in /wp-content/.htaccess)       |
 # ------------------------------------------------------------------------------
 
-# Order Deny,Allow
-# Deny From All
-# <Files ~ ".(xml|css|jpe?g|png|gif|js)$">
-#  Allow From All
-# </Files>
+#Order Deny,Allow
+#Deny From All
+#<Files ~ ".(xml|css|jpe?g|png|gif|js)$">
+#	Allow From All
+#</Files>
 
 # ------------------------------------------------------------------------------
 # | Better login URL (Replace url)                                             |
 # ------------------------------------------------------------------------------
 
-# RewriteRule ^login$ http://example.com/wp-login.php [NC,L]
+#RewriteRule ^login$ http://example.com/wp-login.php [NC,L]
 
 # ------------------------------------------------------------------------------
 # | Access from your IP only (replace IP)                                      |
 # ------------------------------------------------------------------------------
 
-# Order Deny,Allow
-# Allow From 202.090.21.1
-# Deny From All
+#Order Deny,Allow
+#Allow From 202.090.21.1
+#Deny From All
 
 
 
@@ -112,9 +125,9 @@ RewriteRule ^(.*)$ index.php [F,L]
 # http://code.google.com/p/html5security/wiki/CrossOriginRequestSecurity
 # http://enable-cors.org/
 
-# <IfModule mod_headers.c>
-#    Header set Access-Control-Allow-Origin "*"
-# </IfModule>
+#<IfModule mod_headers.c>
+#	Header set Access-Control-Allow-Origin "*"
+#</IfModule>
 
 # ------------------------------------------------------------------------------
 # | CORS-enabled images                                                        |
@@ -126,12 +139,12 @@ RewriteRule ^(.*)$ index.php [F,L]
 # http://hacks.mozilla.org/2011/11/using-cors-to-load-webgl-textures-from-cross-domain-images/
 
 <IfModule mod_setenvif.c>
-    <IfModule mod_headers.c>
-        <FilesMatch "\.(gif|ico|jpe?g|png|svg|svgz|webp)$">
-            SetEnvIf Origin ":" IS_CORS
-            Header set Access-Control-Allow-Origin "*" env=IS_CORS
-        </FilesMatch>
-    </IfModule>
+	<IfModule mod_headers.c>
+		<FilesMatch "\.(gif|ico|jpe?g|png|svg|svgz|webp)$">
+			SetEnvIf Origin ":" IS_CORS
+			Header set Access-Control-Allow-Origin "*" env=IS_CORS
+		</FilesMatch>
+	</IfModule>
 </IfModule>
 
 # ------------------------------------------------------------------------------
@@ -141,9 +154,9 @@ RewriteRule ^(.*)$ index.php [F,L]
 # Allow access from all domains for web fonts
 
 <IfModule mod_headers.c>
-    <FilesMatch "\.(eot|font.css|otf|ttc|ttf|woff)$">
-        Header set Access-Control-Allow-Origin "*"
-    </FilesMatch>
+	<FilesMatch "\.(eot|font.css|otf|ttc|ttf|woff)$">
+		Header set Access-Control-Allow-Origin "*"
+	</FilesMatch>
 </IfModule>
 
 
@@ -169,7 +182,7 @@ Options -MultiViews
 # You can customize what Apache returns to the client in case of an error (see
 # http://httpd.apache.org/docs/current/mod/core.html#errordocument), e.g.:
 
-# ErrorDocument 404 /404.html
+#ErrorDocument 404 /404.html
 
 
 # ##############################################################################
@@ -184,12 +197,12 @@ Options -MultiViews
 # cases when it may not: http://hsivonen.iki.fi/doctype/ie-mode.pdf.
 
 <IfModule mod_headers.c>
-    Header set X-UA-Compatible "IE=edge"
-    # `mod_headers` can't match based on the content-type, however, we only
-    # want to send this header for HTML pages and not for the other resources
-    <FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svg|svgz|ttf|vcf|webapp|webm|webp|woff|xml|xpi)$">
-        Header unset X-UA-Compatible
-    </FilesMatch>
+	Header set X-UA-Compatible "IE=edge"
+	# `mod_headers` can't match based on the content-type, however, we only
+	# want to send this header for HTML pages and not for the other resources
+	<FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svg|svgz|ttf|vcf|webapp|webm|webp|woff|xml|xpi)$">
+		Header unset X-UA-Compatible
+	</FilesMatch>
 </IfModule>
 
 # ------------------------------------------------------------------------------
@@ -198,9 +211,9 @@ Options -MultiViews
 
 # Allow cookies to be set from iframes in IE.
 
-# <IfModule mod_headers.c>
-#   Header set P3P "policyref=\"/w3c/p3p.xml\", CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
-# </IfModule>
+#<IfModule mod_headers.c>
+#	Header set P3P "policyref=\"/w3c/p3p.xml\", CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
+#</IfModule>
 
 # ------------------------------------------------------------------------------
 # | Screen flicker                                                             |
@@ -209,10 +222,10 @@ Options -MultiViews
 # Stop screen flicker in IE on CSS rollovers (this only works in
 # combination with the `ExpiresByType` directives for images from below).
 
-# BrowserMatch "MSIE" brokenvary=1
-# BrowserMatch "Mozilla/4.[0-9]{2}" brokenvary=1
-# BrowserMatch "Opera" !brokenvary
-# SetEnvIf brokenvary 1 force-no-vary
+#BrowserMatch "MSIE" brokenvary=1
+#BrowserMatch "Mozilla/4.[0-9]{2}" brokenvary=1
+#BrowserMatch "Opera" !brokenvary
+#SetEnvIf brokenvary 1 force-no-vary
 
 
 # ##############################################################################
@@ -226,7 +239,7 @@ Options -MultiViews
 <IfModule mod_mime.c>
 
   # Audio
-    AddType audio/mp4                                   m4a f4a f4b
+	AddType audio/mp4                                   m4a f4a f4b
     AddType audio/ogg                                   oga ogg
 
   # JavaScript
@@ -282,7 +295,7 @@ AddDefaultCharset utf-8
 
 # Force UTF-8 for certain file formats.
 <IfModule mod_mime.c>
-    AddCharset utf-8 .atom .css .js .json .rss .vtt .webapp .xml
+	AddCharset utf-8 .atom .css .js .json .rss .vtt .webapp .xml
 </IfModule>
 
 
@@ -305,10 +318,10 @@ AddDefaultCharset utf-8
 # http://www.rackspace.com/knowledge_center/frequently-asked-question/why-is-mod-rewrite-not-working-on-my-site
 
 <IfModule mod_rewrite.c>
-    Options +FollowSymlinks
-  # Options +SymLinksIfOwnerMatch
-    RewriteEngine On
-  # RewriteBase /
+	Options +FollowSymlinks
+  #Options +SymLinksIfOwnerMatch
+	RewriteEngine On
+  #RewriteBase /
 </IfModule>
 
 # ------------------------------------------------------------------------------
@@ -345,10 +358,10 @@ AddDefaultCharset utf-8
 # Be aware that the following might not be a good idea if you use "real"
 # subdomains for certain parts of your website.
 
-# <IfModule mod_rewrite.c>
-#    RewriteCond %{HTTPS} !=on
-#    RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
-#    RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#<IfModule mod_rewrite.c>
+#	RewriteCond %{HTTPS} !=on
+#	RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
+#	RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 # </IfModule>
 
 
@@ -372,12 +385,12 @@ AddDefaultCharset utf-8
 # read: http://html5rocks.com/en/tutorials/security/content-security-policy (or
 # see the specification: http://w3.org/TR/CSP).
 
-# <IfModule mod_headers.c>
+#<IfModule mod_headers.c>
 #    Header set Content-Security-Policy "script-src 'self'; object-src 'self'"
 #    <FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svg|svgz|ttf|vcf|webapp|webm|webp|woff|xml|xpi)$">
 #        Header unset Content-Security-Policy
-#    </FilesMatch>
-# </IfModule>
+#	</FilesMatch>
+#</IfModule>
 
 # ------------------------------------------------------------------------------
 # | File access                                                                |
@@ -423,10 +436,10 @@ AddDefaultCharset utf-8
 # prevent `https://www.example.com` when your certificate only allows
 # `https://secure.example.com`.
 
-# <IfModule mod_rewrite.c>
-#    RewriteCond %{SERVER_PORT} !^443
-#    RewriteRule ^ https://example-domain-please-change-me.com%{REQUEST_URI} [R=301,L]
-# </IfModule>
+#<IfModule mod_rewrite.c>
+#	RewriteCond %{SERVER_PORT} !^443
+#	RewriteRule ^ https://example-domain-please-change-me.com%{REQUEST_URI} [R=301,L]
+#</IfModule>
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -439,9 +452,9 @@ AddDefaultCharset utf-8
 # server via HTTPS, regardless of what the users type in the address bar.
 # http://www.html5rocks.com/en/tutorials/security/transport-layer-security/
 
-# <IfModule mod_headers.c>
-#    Header set Strict-Transport-Security max-age=16070400;
-# </IfModule>
+#<IfModule mod_headers.c>
+#	Header set Strict-Transport-Security max-age=16070400;
+#</IfModule>
 
 # ------------------------------------------------------------------------------
 # | Server software information                                                |
@@ -452,7 +465,7 @@ AddDefaultCharset utf-8
 
 # ADD THIS DIRECTIVE IN THE `httpd.conf` AS IT WILL NOT WORK IN THE `.htaccess`!
 
-# ServerTokens Prod
+#ServerTokens Prod
 
 
 # ##############################################################################
@@ -507,9 +520,9 @@ AddDefaultCharset utf-8
 # Prevent some of the mobile network providers from modifying the content of
 # your site: http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.5.
 
-# <IfModule mod_headers.c>
-#    Header set Cache-Control "no-transform"
-# </IfModule>
+#<IfModule mod_headers.c>
+#	Header set Cache-Control "no-transform"
+#</IfModule>
 
 # ------------------------------------------------------------------------------
 # | ETag removal                                                               |
@@ -595,11 +608,11 @@ FileETag None
 # To understand why this is important and a better idea than `*.css?v231`, read:
 # http://stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring
 
-# <IfModule mod_rewrite.c>
-#    RewriteCond %{REQUEST_FILENAME} !-f
-#    RewriteCond %{REQUEST_FILENAME} !-d
-#    RewriteRule ^(.+)\.(\d+)\.(js|css|png|jpg|gif)$ $1.$3 [L]
-# </IfModule>
+#<IfModule mod_rewrite.c>
+#	RewriteCond %{REQUEST_FILENAME} !-f
+#	RewriteCond %{REQUEST_FILENAME} !-d
+#	RewriteRule ^(.+)\.(\d+)\.(js|css|png|jpg|gif)$ $1.$3 [L]
+#</IfModule>
 
 # ------------------------------------------------------------------------------
 # | File concatenation                                                         |
@@ -611,18 +624,18 @@ FileETag None
 #   <!--#include file="plugins/jquery.idletimer.js" -->
 # and they would be included into this single file.
 
-# <IfModule mod_include.c>
-#    <FilesMatch "\.combined\.js$">
-#        Options +Includes
-#        AddOutputFilterByType INCLUDES application/javascript application/json
-#        SetOutputFilter INCLUDES
-#    </FilesMatch>
-#    <FilesMatch "\.combined\.css$">
-#        Options +Includes
-#        AddOutputFilterByType INCLUDES text/css
-#        SetOutputFilter INCLUDES
-#    </FilesMatch>
-# </IfModule>
+#<IfModule mod_include.c>
+#	<FilesMatch "\.combined\.js$">
+#		Options +Includes
+#		AddOutputFilterByType INCLUDES application/javascript application/json
+#		SetOutputFilter INCLUDES
+#	</FilesMatch>
+#	<FilesMatch "\.combined\.css$">
+#		Options +Includes
+#		AddOutputFilterByType INCLUDES text/css
+#		SetOutputFilter INCLUDES
+#	</FilesMatch>
+#</IfModule>
 
 # ------------------------------------------------------------------------------
 # | Persistent connections                                                     |
@@ -634,8 +647,8 @@ FileETag None
 # Enable if you serve a lot of static content but, be aware of the
 # possible disadvantages!
 
-# <IfModule mod_headers.c>
-#    Header set Connection Keep-Alive
-# </IfModule>
+#<IfModule mod_headers.c>
+#	Header set Connection Keep-Alive
+#</IfModule>
 
 # END Apache Configuration File

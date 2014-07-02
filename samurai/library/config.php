@@ -42,6 +42,21 @@ class Samurai_Config {
          *  Front end layout and design options
          *
          */
+         
+        /**
+         * Set theme directory uri
+         */
+        define('SAMURAI_THEME_DIRECTORY_URI', get_stylesheet_directory_uri());
+
+        /**
+         * Set site name
+         */
+        define('SAMURAI_SITE_NAME', get_bloginfo('name'));
+        
+        /**
+         * Set home URL
+         */
+        define('SAMURAI_HOME_URL', home_url());
 
         /**
          * Set full page content width

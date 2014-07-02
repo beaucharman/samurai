@@ -218,28 +218,28 @@ class Samurai_Snippet
 		}
 		elseif (is_tag()) /* Tag Archive */
 		{
-			$archive_title = _e('Articles Tagged &#8216;') . single_tag_title('', false) . _e('&#8217;');
+			$archive_title = __('Articles Tagged &#8216;') . single_tag_title('', false) . __('&#8217;');
 		}
 		elseif (is_day()) /* Daily Archive */
 		{
-			$archive_title = _e('Archive for ') . get_the_time('F jS, Y');
+			$archive_title = __('Archive for ') . get_the_time('F jS, Y');
 		}
 		elseif (is_month()) /* Monthly Archive */
 		{
-			$archive_title = _e('Archive for ') . get_the_time('F, Y');
+			$archive_title = __('Archive for ') . get_the_time('F, Y');
 		}
 		elseif (is_year()) /* Yearly Archive */
 		{
-			$archive_title = _e('Archive for ') . get_the_time('Y');
+			$archive_title = __('Archive for ') . get_the_time('Y');
 		}
 		elseif (is_author()) /* Author Archive */
 		{
-			$archive_title = _e('Author Archive');
+			$archive_title = __('Author Archive');
 		}
 		elseif (is_tax()) /* Taxonomy Archive */
 		{
 			$taxonomy_term = $wp_query->get_queried_object();
-			$archive_title = $taxonomy_term->name . _e(' Archive');
+			$archive_title = $taxonomy_term->name . __(' Archive');
 		}
 		elseif (method_exists('Samurai_Helper', 'is_post_type') && Samurai_Helper::is_post_type()) /* Post Type Archive */
 		{
@@ -248,11 +248,11 @@ class Samurai_Snippet
 		}
 		elseif (isset($_GET['paged']) && ! empty($_GET['paged'])) /* Paged Archive */
 		{
-			$archive_title = _e('Article Archives');
+			$archive_title = __('Article Archives');
 		}
 		else /* Archive */
 		{
-			$archive_title = _e('Article Archive');
+			$archive_title = __('Article Archive');
 		}
 
 		return $archive_title;

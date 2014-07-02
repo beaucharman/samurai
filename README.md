@@ -17,7 +17,7 @@
 
 ### Installation
 1. Add the `samurai` folder to your theme's directory.
-2. add the `.htaccess` and `.gitignore` files to your WordPress root.
+2. add the `.htaccess` and `.gitignore` (make sure you update paths!) files to your WordPress root.
 3. With the `wp-config-sample.php` file:
   1. Rename to `wp-config.php` and add it to your WordPress root.
   2. Go to https://api.wordpress.org/secret-key/1.1/salt/ and copy the unique, newly generated salts and replace the place holder salts.
@@ -78,15 +78,31 @@ Some nice deployment configurations, house cleaning and security stuff in there.
 Which should contain:
 
 ```
-# Prevent directory browsing
+# ------------------------------------------------------------------------------
+# | Prevent directory browsing                                                 |
+# ------------------------------------------------------------------------------
 Options All -Indexes
 
-# Protect all sever side files
-Order deny,allow
-Deny from all
-<Files ~ “.(css|js|pdf|doc|xml|jpe?g|png|gif|svg|ttf|woff|eot)$”>
-Allow from all
-</Files>
+
+# ------------------------------------------------------------------------------
+# | Protect all sever side files                                               |
+# ------------------------------------------------------------------------------
+
+# Option 1
+
+#Order deny,allow
+#Deny from all
+#<Files ~ “.(css|js|pdf|doc|xml|jpe?g|png|gif|svg|ttf|woff|eot|mp3?mp4?flv)$”>
+#Allow from all
+#</Files>
+
+# Option 2
+
+#Order deny,allow
+#Allow from all
+#<Files ~ “.(php)$”>
+#Deny from all
+#</Files>
 ```
 
 **Enforce SSL Usage**

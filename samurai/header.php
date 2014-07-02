@@ -6,7 +6,7 @@
  * @package      WordPress
  * @subpackage   samurai
  */
-?><!doctype html>
+?><!DOCTYPE html>
 <!--[if lt IE 9]><html class="no-js oldie"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
