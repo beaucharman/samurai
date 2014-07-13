@@ -38,6 +38,10 @@ class Samurai_Admin
 		 */
 		add_filter('admin_footer_text', array(&$this, 'replace_admin_footer'));
 
+		// add_filter('login_headertitle', array(&$this, 'my_login_logo_url_title'));
+
+		// add_filter('login_headerurl', array(&$this, 'custom_login_logo_url'));
+
 		if (! SAMURAI_ENABLE_COMMENTS)
 		{
 			/* Remove the comments admin menu item */
@@ -111,6 +115,28 @@ class Samurai_Admin
 		return 'Powered by '
 			. '<a href="http://wordpress.org/" title="Visit WordPress.org" rel="external">WordPress</a>. '
 			. 'Built with love.';
+	}
+
+
+
+	/**
+	 * my_login_logo_url
+	 * @return {string}
+	 */
+	function custom_login_logo_url()
+	{
+		return get_bloginfo( 'url' );
+	}
+
+
+
+	/**
+	 * custom_login_logo_url_title_attr
+	 * @return {string}
+	 */
+	function custom_login_logo_url_title_attr()
+	{
+		return get_bloginfo( 'name' );
 	}
 
 
