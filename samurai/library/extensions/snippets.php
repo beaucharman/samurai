@@ -369,8 +369,8 @@ class Samurai_Snippet
 			}
 
 			/* Time */
-			echo 'on the ';
-			the_time('jS \o\f F, Y');
+			echo 'Posted on ';
+			the_time('F jS, Y');
 			echo '.';
 
 			/* Comments */
@@ -381,8 +381,8 @@ class Samurai_Snippet
 			}
 
 			/* Tags */
-			echo '</div><br>';
-			the_tags('<span class="post-tags">Tags: ', ', ', '</span>');
+			echo '</div>';
+			the_tags('<div class="post-tags">Tags: ', ', ', '</div>');
 			echo '</aside>';
 		}
 	}
