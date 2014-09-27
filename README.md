@@ -118,7 +118,7 @@ If it is necessary, within the wp-config.php file, place the following code:
 **Files Permissions**
 
 - wp-config.php - 400 or 440.
-- .htaccess - 644. Set yo 664 if you want WordPress to be able to edit this file for you.
+- .htaccess - 644. Set to 664 if you want WordPress to be able to edit this file for you.
 - /wp-content/ - 777 according to WordPress Codex. It’s better to set it 755 and change to 777 temporary if some plugins require that level of access.
 - /wp-content/themes/ - 755.
 - /wp-content/plugins/ - 755.
