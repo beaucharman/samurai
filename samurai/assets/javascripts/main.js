@@ -10,97 +10,105 @@
  * @license      MIT license
  */
 
+var Samurai = window.Samurai || {};
+Samurai.App = Samurai.App || {};
 
-;(function ($) {
-
-
-
-	_samurai = {
-
-
-
-		/**
-		 * vars
-		 * @type {Object}
-		 */
-		vars : {
-
-			resizeTimer: null,
-			resizeTimerCount: 200,
-			// $body: $('body')
-		},
-
-
-
-		/**
-		 * init
-		 * @return
-		 */
-		init: function () {
-
-			var _this = this;
-			
-			/* Trigger that this is ready */
-    			$(window).trigger('_samurai:namespace:isReady');
-
-		},
-
-
-
-		/**
-		 * resize
-		 * @return
-		 */
-		resize: function () { },
-
-
-
-		/**
-		 *
-		 * Project Functions
-		 *
-		 */
-
-
-
-	}; // end _samurai
+Samurai.App = {
 
 
 
 	/**
-	 * Document ready functions
+	 * vars
+	 * @type {Object}
 	 */
+	vars : {
 
-	// $(document).ready(function () {
-
-	// 	var _samurai = window._samurai;
-
-	// 	_samurai.init();
-
-	// 	$(window).trigger('resize');
-
-	// });
+		resizeTimer: null,
+		resizeTimerCount: 200,
+		// $body: $('body')
+	},
 
 
 
 	/**
-	 * Window load functions
+	 * init
+	 * @return
 	 */
-	// $(window).load(function () {
+	init: function (_this) {
 
-	// 	$(window).trigger('resize');
+		var _this = _this || Samurai.App;
+		
+		/* call functions... */
+		
+		
+		
+		/* Trigger that this is ready */
+    		$(window).trigger('Samurai:App:isReady');
 
-	// });
+	},
 
 
 
 	/**
-	 * Window resize functions
+	 * resize {function}
+	 * @return
 	 */
-	// $(window).resize(function () {
+	resize: function () { },
 
-	// 	clearTimeout(_samurai.vars.resizeTimer);
-	// 	_samurai.vars.resizeTimer = setTimeout(_samurai.resize, _samurai.vars.resizeTimerCount);
-	// });
 
-})(); // pass jQuery here
+
+	/**
+	 * Project Functions
+	 * 
+	 * fn {object}
+	 */
+	fn: { }
+
+
+}; // end Samurai.App
+
+
+
+/**
+ * Document ready functions
+ */
+
+// $(document).ready(function () {
+
+// 	var _samurai = window._samurai;
+
+// 	_samurai.init();
+
+// 	$(window).trigger('resize');
+
+// });
+
+
+
+/**
+ * Window load functions
+ */
+// $(window).load(function () {
+
+// 	$(window).trigger('resize');
+
+// });
+
+
+
+/**
+ * Window resize functions
+ */
+// $(window).resize(function () {
+
+// 	clearTimeout(_samurai.vars.resizeTimer);
+// 	_samurai.vars.resizeTimer = setTimeout(_samurai.resize, _samurai.vars.resizeTimerCount);
+// });
+
+
+
+(function () {
+
+	Samurai.App.init(Samurai.App);
+
+})();
