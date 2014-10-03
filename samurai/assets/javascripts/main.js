@@ -39,6 +39,9 @@
 		init: function () {
 
 			var _this = this;
+			
+			/* Trigger that this is ready */
+    			$(window).trigger('_samurai:namespace:isReady');
 
 		},
 
