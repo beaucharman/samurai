@@ -41,7 +41,7 @@ get_header(); ?>
 
 	<?php else : ?>
 
-		<?php Samurai_Snippet::get_message('not-found'); ?>
+		<?php Samurai_View::make('message', 'not-found'); ?>
 
 	<?php endif; ?>
 
